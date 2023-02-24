@@ -11,6 +11,7 @@ import { SingleComponent } from './single/single.component';
 import { ShopComponent } from './shop/shop.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ThankyouComponent } from './thankyou/thankyou.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ThankyouComponent } from './thankyou/thankyou.component';
     ShopComponent,
     CheckoutComponent,
     ThankyouComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
