@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PricecomComponent } from './pricecom/pricecom.component';
+import { RegisterComponent } from './register/register.component';
 import { ShopComponent } from './shop/shop.component';
 import { SingleComponent } from './single/single.component';
 import { ThankyouComponent } from './thankyou/thankyou.component';
@@ -13,6 +14,7 @@ import { ThankyouComponent } from './thankyou/thankyou.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: '', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'header', component: HeaderComponent},
   {path: 'homie', component: HomeComponent},
   {path: 'footer', component: FooterComponent},

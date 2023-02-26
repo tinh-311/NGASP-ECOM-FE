@@ -12,6 +12,15 @@ import { ShopComponent } from './shop/shop.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ThankyouComponent } from './thankyou/thankyou.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+
+import {MatIconModule} from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+
+
 
 @NgModule({
   declarations: [
@@ -25,10 +34,16 @@ import { LoginComponent } from './login/login.component';
     CheckoutComponent,
     ThankyouComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
