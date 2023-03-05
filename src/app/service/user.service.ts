@@ -15,6 +15,6 @@ export class UserService {
 
   //test
   getPost(): Observable<any> {
-    return this.httpClient.get(this.apiUrl);
+    return this.httpClient.get<any>(this.apiUrl);
   }
 }
