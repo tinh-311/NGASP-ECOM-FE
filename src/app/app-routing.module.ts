@@ -12,11 +12,11 @@ import { SingleComponent } from './single/single.component';
 import { ThankyouComponent } from './thankyou/thankyou.component';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
   {path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'header', component: HeaderComponent},
-  {path: 'homie', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'footer', component: FooterComponent},
   {path: 'shop', component: ShopComponent},
   {path: 'pricecom', component: PricecomComponent},
