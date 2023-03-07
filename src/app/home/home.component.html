@@ -1,20 +1,21 @@
 <app-header></app-header>
+
 <!-- ================ SECTION INTRO ================ -->
 <section class="section-intro padding-top-sm">
   <div class="container">
   <main class="card p-3">
     <div class="row">
       <aside class="col-lg-3">
-        <nav class="nav flex-column nav-pills">
-          <a class="nav-link active" aria-current="page" href="#">Electronics</a>
-          <a class="nav-link" href="#">Clothes and wear</a>
+        <nav *ngFor="let item of data"class="nav flex-column nav-pills">
+          <a class="nav-link" aria-current="page" href="#">{{item.category}}</a>
+          <!-- <a class="nav-link" href="#">Clothes and wear</a>
           <a class="nav-link" href="#">Home interiors</a>
           <a class="nav-link" href="#">Computer and tech</a>
           <a class="nav-link" href="#">Tools, equipments</a>
           <a class="nav-link" href="#">Sports and outdoor</a>
           <a class="nav-link" href="#">Animal and pets</a>
           <a class="nav-link" href="#">Machinery tools</a>
-          <a class="nav-link" href="#">Other products</a>
+          <a class="nav-link" href="#">Other products</a> -->
         </nav>
       </aside>
       <div class="col-lg-9">
@@ -40,7 +41,7 @@
   <div class="row">
     <div class="col-lg-3 col-md-6 col-sm-6">
       <figure class="card card-product-grid">
-        <a href="#" class="img-wrap">
+        <a routerLink="/single" class="img-wrap" >
           <span class="topbar"> <b class="badge bg-success"> Offer </b> </span>
           <img src="assets/images/items/12.webp">
         </a>
@@ -56,7 +57,7 @@
     </div> <!-- col end.// -->
     <div class="col-lg-3 col-md-6 col-sm-6">
       <figure class="card card-product-grid">
-        <a href="#" class="img-wrap">
+        <a routerLink="/single" class="img-wrap">
           <img src="assets/images/items/11.webp">
         </a>
         <figcaption class="info-wrap border-top">
@@ -69,7 +70,7 @@
     </div> <!-- col end.// -->
     <div class="col-lg-3 col-md-6 col-sm-6">
       <figure class="card card-product-grid">
-        <a href="#" class="img-wrap">
+        <a routerLink="/single" class="img-wrap">
           <img src="assets/images/items/10.webp">
         </a>
         <figcaption class="info-wrap border-top">
@@ -82,7 +83,7 @@
     </div> <!-- col end.// -->
     <div class="col-lg-3 col-md-6 col-sm-6">
       <figure class="card card-product-grid">
-        <a href="#" class="img-wrap">
+        <a routerLink="/single" class="img-wrap">
           <img src="assets/images/items/9.webp">
         </a>
         <figcaption class="info-wrap border-top">
@@ -95,7 +96,7 @@
     </div> <!-- col end.// -->
     <div class="col-lg-3 col-md-6 col-sm-6">
       <figure class="card card-product-grid">
-        <a href="#" class="img-wrap">
+        <a routerLink="/single" class="img-wrap">
           <img src="assets/images/items/5.webp">
         </a>
         <figcaption class="info-wrap border-top">
@@ -108,7 +109,7 @@
     </div> <!-- col end.// -->
     <div class="col-lg-3 col-md-6 col-sm-6">
       <figure class="card card-product-grid">
-        <a href="#" class="img-wrap">
+        <a routerLink="/single" class="img-wrap">
           <img src="assets/images/items/6.webp">
         </a>
         <figcaption class="info-wrap border-top">
@@ -121,7 +122,7 @@
     </div> <!-- col end.// -->
     <div class="col-lg-3 col-md-6 col-sm-6">
       <figure class="card card-product-grid">
-        <a href="#" class="img-wrap">
+        <a routerLink="/single" class="img-wrap">
           <img src="assets/images/items/7.webp">
         </a>
         <figcaption class="info-wrap border-top">
@@ -134,7 +135,7 @@
     </div> <!-- col end.// -->
     <div class="col-lg-3 col-md-6 col-sm-6">
       <figure class="card card-product-grid">
-        <a href="#" class="img-wrap">
+        <a routerLink="/single" class="img-wrap">
           <img src="assets/images/items/8.webp">
         </a>
         <figcaption class="info-wrap border-top">
@@ -204,32 +205,32 @@
   </header>
   <div class="row gy-3">
     <div class="col-lg-2 col-md-4 col-4">
-      <a href="#" class="img-wrap">
+      <a routerLink="/single" class="img-wrap">
         <img height="200" width="200" class="img-thumbnail" src="assets/images/items/1.webp">
       </a>
     </div> <!-- col.// -->
     <div class="col-lg-2 col-md-4 col-4">
-      <a href="#" class="img-wrap">
+      <a routerLink="/single" class="img-wrap">
         <img height="200" width="200" class="img-thumbnail" src="assets/images/items/2.webp">
       </a>
     </div> <!-- col.// -->
     <div class="col-lg-2 col-md-4 col-4">
-      <a href="#" class="img-wrap">
+      <a routerLink="/single" class="img-wrap">
         <img height="200" width="200" class="img-thumbnail" src="assets/images/items/3.webp">
       </a>
     </div> <!-- col.// -->
     <div class="col-lg-2 col-md-4 col-4">
-      <a href="#" class="img-wrap">
+      <a routerLink="/single" class="img-wrap">
         <img height="200" width="200" class="img-thumbnail" src="assets/images/items/4.webp">
       </a>
     </div> <!-- col.// -->
     <div class="col-lg-2 col-md-4 col-4">
-      <a href="#" class="img-wrap">
+      <a routerLink="/single" class="img-wrap">
         <img height="200" width="200" class="img-thumbnail" src="assets/images/items/5.webp">
       </a>
     </div> <!-- col.// -->
     <div class="col-lg-2 col-md-4 col-4">
-      <a href="#" class="img-wrap">
+      <a routerLink="/single" class="img-wrap">
         <img height="200" width="200" class="img-thumbnail" src="assets/images/items/6.webp">
       </a>
     </div> <!-- col.// -->

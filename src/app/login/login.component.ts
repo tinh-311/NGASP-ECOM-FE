@@ -13,4 +13,9 @@ export class LoginComponent  {
   register() {
     this.router.navigate(['/register']);
   }
+
+  check_Login() {
+    this.router.navigate(['/home']);
+  }
+
 }
