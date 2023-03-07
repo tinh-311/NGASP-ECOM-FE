@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from './../service/user.service';
+import { Catagory } from '../model/Catagory.model';
+import { CategoryService } from '../service/category.service';
 
 @Component({
   selector: 'app-home',
@@ -7,14 +8,17 @@ import { UserService } from './../service/user.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  data: any;
-  constructor(private userService: UserService) { }
+  data: Catagory[]=[];
+  constructor(private categoryList: CategoryService) { }
 
-  ngOnInit() {
-    this.userService.getPost()
+  ngOnInit(): void {
+    this.getCatagory();
+  }
+
+  getCatagory() {
+    this.categoryList.getCategoryList()
     .subscribe((data: any) => {
       this.data = data;
-      console.log('🌷🌷🌷 ~ this.data: ', this.data)
     });
   }
 }
