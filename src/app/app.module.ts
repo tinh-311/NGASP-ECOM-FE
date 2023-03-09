@@ -22,6 +22,9 @@ import {MatButtonModule} from '@angular/material/button';
 
 
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule, TitleCasePipe  } from '@angular/common';
+import { ProductsComponent } from './products/products.component';
+import { CategoryComponent } from './category/category.component';
 
 
 
@@ -38,6 +41,8 @@ import { HttpClientModule } from '@angular/common/http';
     ThankyouComponent,
     LoginComponent,
     RegisterComponent,
+    ProductsComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,9 +52,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
   ],
-  providers: [],
+  providers: [TitleCasePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
