@@ -1,0 +1,55 @@
+<div id="mySidenav" class="sidenav" [ngClass]="status ? 'active' : 'inactive'">
+  <p class="logo"><span>A</span><b [ngClass]="status ? 'hidden' : 'visible'">-Watch</b></p>
+  <a (click)="onChangeSession(NAV_ITEM.Dashboard)" [ngClass]="{'active': sessison === NAV_ITEM.Dashboard }" [style]="{'cursor':'pointer'}" class="icon-a"><i class="fa fa-dashboard icons"></i>   <span [ngClass]="status ? 'hidden' : 'visible'"> {{ NAV_ITEM.Dashboard }} </span></a>
+  <a (click)="onChangeSession(NAV_ITEM.ManageUsers)" [ngClass]="{'active': sessison === NAV_ITEM.ManageUsers}" [style]="{'cursor':'pointer'}" class="icon-a"><i class="fa fa-users icons"></i>   <span [ngClass]="status ? 'hidden' : 'visible'"> {{ NAV_ITEM.ManageUsers }} </span></a>
+  <a (click)="onChangeSession(NAV_ITEM.ManageCategories)" [ngClass]="{'active': sessison === NAV_ITEM.ManageCategories}" [style]="{'cursor':'pointer'}" class="icon-a"><i class="fa fa-list icons"></i>   <span [ngClass]="status ? 'hidden' : 'visible'"> {{ NAV_ITEM.ManageCategories }} </span></a>
+  <a (click)="onChangeSession(NAV_ITEM.ManageProducts)" [ngClass]="{'active': sessison === NAV_ITEM.ManageProducts}" [style]="{'cursor':'pointer'}" class="icon-a"><i class="fa fa-shopping-bag icons"></i>   <span [ngClass]="status ? 'hidden' : 'visible'"> {{ NAV_ITEM.ManageProducts }} </span></a>
+</div>
+<div id="main" [ngClass]="status ? 'fullw' : 'smallw'">
+  <div class="head">
+    <div class="col-div-6">
+<span style="font-size:25px;cursor:pointer;" class="nav"  (click)="addToggle()">&#9776; {{ title }}</span>
+<span style="font-size:25px;cursor:pointer;" class="nav2"  (click)="addToggle()">&#9776; {{ title }}</span>
+</div>
+
+  <div class="col-div-6">
+  <div class="profile">
+  </div>
+</div>
+  <div class="clearfix"></div>
+</div>
+  <div class="clearfix"></div>
+  <br/>
+
+  <div *ngIf="sessison === NAV_ITEM.Dashboard">
+    <div class="col-div-3">
+      <div class="box card">
+        <p>67<br/><span>Customers</span></p>
+        <i class="fa fa-users box-icon"></i>
+      </div>
+    </div>
+    <div class="col-div-3">
+      <div class="box card">
+        <p>88<br/><span>Category</span></p>
+        <i class="fa fa-list box-icon"></i>
+      </div>
+    </div>
+    <div class="col-div-3">
+      <div class="box card">
+        <p>99<br/><span>Products</span></p>
+        <i class="fa fa-shopping-bag box-icon"></i>
+      </div>
+    </div>
+    <div class="col-div-3">
+      <div class="box card">
+        <p>78<br/><span>Orders</span></p>
+        <i class="fa fa-tasks box-icon"></i>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+
+  <app-manage-users *ngIf="sessison === NAV_ITEM.ManageUsers"></app-manage-users>
+  <app-manage-categories *ngIf="sessison === NAV_ITEM.ManageCategories"></app-manage-categories>
+  <app-manage-products *ngIf="sessison === NAV_ITEM.ManageProducts"></app-manage-products>
+</div>

@@ -25,6 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule, TitleCasePipe  } from '@angular/common';
 import { ProductsComponent } from './products/products.component';
 import { CategoryComponent } from './category/category.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
+import { ManageCategoriesComponent } from './admin/manage-categories/manage-categories.component';
+import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
 
 
 
@@ -43,6 +47,10 @@ import { CategoryComponent } from './category/category.component';
     RegisterComponent,
     ProductsComponent,
     CategoryComponent,
+    DashboardComponent,
+    ManageUsersComponent,
+    ManageCategoriesComponent,
+    ManageProductsComponent,
   ],
   imports: [
     BrowserModule,
