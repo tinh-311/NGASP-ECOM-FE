@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
 
   onCategoryChange(value: any) {
     this.category = value;
-    console.log('🌷🌷🌷 ~ this.category: ', this.category)
     this.isProductSession = true;
   }
 }

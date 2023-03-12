@@ -30,6 +30,7 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 import { ManageCategoriesComponent } from './admin/manage-categories/manage-categories.component';
 import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -63,6 +64,7 @@ import { ManageProductsComponent } from './admin/manage-products/manage-products
     MatButtonModule,
     HttpClientModule,
     CommonModule,
+    FormsModule,
   ],
   providers: [TitleCasePipe],
   bootstrap: [AppComponent]

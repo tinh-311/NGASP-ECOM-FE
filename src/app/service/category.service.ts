@@ -7,15 +7,21 @@ import { Catagory } from '../model/Catagory.model';
   providedIn: 'root'
 })
 export class CategoryService {
+  apiUrl = 'http://alo1234.somee.com/api';
   httpOptions = {
     headers:new HttpHeaders({'Content-Type':'Application/json'})
   }
 
   constructor(private httpClient: HttpClient) { }
-  apiCategoryUrl = 'http://alo1234.somee.com/GetCategoryList';
 
   getCategoryList(): Observable<Catagory[]> {
-    return this.httpClient.get<Catagory[]>(this.apiCategoryUrl);
+    return this.httpClient.get<Catagory[]>(this.apiUrl + '/Category/GetCategoryList');
   }
 
+  getById(id: any): Observable<Catagory> {
+    return this.httpClient.get<Catagory>(this.apiUrl
+      + '/Category/GetProductCategory/id'
+      + `?id=${id}`
+    );
+  }
 }

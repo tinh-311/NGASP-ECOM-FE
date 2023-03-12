@@ -1,9 +1,7 @@
 <app-header></app-header>
 <app-category (clickCategoryEvent)="onCategoryChange($event)"></app-category>
 
-<app-products [category] = 'category' *ngIf="isProductSession"></app-products>
-
-<div *ngIf="!isProductSession">
+<div>
   <section class="padding-top">
     <div class="container">
       <header class="section-heading">
