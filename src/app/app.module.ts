@@ -31,6 +31,7 @@ import { ManageUsersComponent } from './admin/manage-users/manage-users.componen
 import { ManageCategoriesComponent } from './admin/manage-categories/manage-categories.component';
 import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
 import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -65,6 +66,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     CommonModule,
     FormsModule,
+    NgxPaginationModule
   ],
   providers: [TitleCasePipe],
   bootstrap: [AppComponent]

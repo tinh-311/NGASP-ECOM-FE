@@ -25,8 +25,8 @@ export class ShopComponent implements OnInit {
   productsPage: Product[] = [];
 
   pageCurrent: number = 1;
-
   productArrayFilter: number = 6;
+  totalItems: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -53,23 +53,17 @@ export class ShopComponent implements OnInit {
     this.rangeValue = this.maxValue;
   }
 
-  resetpagination() {
-    this.paginationLength = Math.ceil(this.products.length / 6);
-    this.products = this.products.slice(0, 6);
-  }
-
   filterPrice() {
-    this.products = this.productsOriginal;
-    this.products = this.products.filter((product: any) => product.price >= this.minValue && product.price <= this.maxValue);
-    this.resetpagination();
+    this.products = this.productsOriginal.filter((product: any) => product.price >= this.minValue && product.price <= this.maxValue);
+    this.totalItems = this.products.length;
   }
 
   clearFilter() {
     this.products = this.productsOriginal;
+    this.totalItems = this.products.length;
     this.rangeValue = 0;
     this.maxValue = 0;
     this.minValue = 0;
-    this.resetpagination();
   }
 
   getProducts() {
@@ -81,24 +75,8 @@ export class ShopComponent implements OnInit {
     this.productService.getAll(categoryParam).subscribe((data) => {
       this.products = data as Product[];
       this.productsOriginal = this.products;
-      this.resetpagination();
+      this.totalItems = this.products.length;
     })
-  }
-
-  nextPage() {
-    if(this.paginationLength <= 0 || this.pageCurrent > this.paginationLength) {
-      return;
-    }
-
-    this.pageCurrent++;
-    const p = Math.ceil((this.productsOriginal.length/6) * this.pageCurrent)
-    this.products = this.productsOriginal.slice(p - 6, p);
-  }
-
-  pageClick(pageNumber: number) {
-    this.pageCurrent = pageNumber + 1;
-    const p = Math.ceil((this.productsOriginal.length/6) * this.pageCurrent)
-    this.products = this.productsOriginal.slice(p - 6, p);
   }
 
   arrayFromNumber(num: number) {
