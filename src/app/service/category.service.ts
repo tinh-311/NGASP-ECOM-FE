@@ -12,7 +12,7 @@ export class CategoryService {
   }
 
   constructor(private httpClient: HttpClient) { }
-  apiCategoryUrl = 'http://alo1234.somee.com/api/Shopping/GetCategoryList';
+  apiCategoryUrl = 'http://alo1234.somee.com/GetCategoryList';
 
   getCategoryList(): Observable<Catagory[]> {
     return this.httpClient.get<Catagory[]>(this.apiCategoryUrl);
