@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Catagory } from './../model/Catagory.model';
 import { CategoryService } from '../service/category.service';
 import { ProductService } from '../service/product.service';
@@ -31,7 +31,8 @@ export class ShopComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private categoryService: CategoryService,
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -85,5 +86,13 @@ export class ShopComponent implements OnInit {
 
   formatTitle(title: any): string {
     return title?.slice(0, 32) + '...';
+  }
+
+  navigateDetails(product: any) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: { categoryId: product.id }
+    };
+
+    this.router.navigate(['/single'], navigationExtras);
   }
 }

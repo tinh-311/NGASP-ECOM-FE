@@ -23,4 +23,10 @@ export class ProductService {
       + `?category=${categoryParams?.category}&subcategory=${categoryParams?.subCategory}&count=10000`
     );
   }
+
+  getById(id: string) {
+    return this.httpClient.get(this.apiUrl
+      + `/Product/GetProduct/${id}`
+    );
+  }
 }

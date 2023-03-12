@@ -67,14 +67,14 @@
         <div class="row"  >
           <div *ngFor="let product of products | paginate: { itemsPerPage: 6, currentPage: pageCurrent }" class="col-lg-4 col-md-6 col-sm-6">
             <figure class="card card-product-grid">
-              <a routerLink="/single">
+              <a (click)="navigateDetails(product)">
               <div class="img-wrap">
                 <img src="{{ product.imageName }}">
               </div>
               </a>
               <figcaption class="info-wrap border-top">
                 <div class="price-wrap">
-                  <strong class="price"> {{ product?.price| currency:'VND' }} </strong>
+                  <strong class="price"> {{ product?.price | currency:'VND' }} </strong>
                 </div>
                 <p class="title mb-2"> {{ formatTitle(product.title) }} </p>
 
