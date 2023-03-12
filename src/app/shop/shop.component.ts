@@ -12,7 +12,7 @@ import { Product } from './../model/product.model';
 })
 export class ShopComponent implements OnInit {
   categoryId: string = '';
-  categoryData : Catagory = {};
+  categoryData: any = {};
 
   rangeValue: number = 0;
   minValue: number = 0;
