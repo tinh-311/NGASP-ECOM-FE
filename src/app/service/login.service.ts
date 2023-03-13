@@ -14,7 +14,6 @@ export class LoginService {
   ) { }
 
   login(user: User) {
-    console.log('🌷🌷🌷 ~ user: ', user)
     return this.httpClient.post<any>(this.apiUrl + '/User/LoginUser', user, { headers: this.headers });
   }
 }

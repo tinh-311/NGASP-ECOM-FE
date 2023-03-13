@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { User } from '../model/User.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,8 @@ export class UserService {
     return this.httpClient.get<any>(this.apiUrl + `/GetUsers`);
   }
 
+  register(user: User) {
+    return this.httpClient.post<any>(this.apiUrl + '/RegisterUser', user);
+  }
 
 }
