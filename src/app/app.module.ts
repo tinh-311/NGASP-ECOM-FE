@@ -32,7 +32,7 @@ import { ManageCategoriesComponent } from './admin/manage-categories/manage-cate
 import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -67,7 +67,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CommonModule,
     FormsModule,
     NgxPaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [TitleCasePipe],
   bootstrap: [AppComponent]
