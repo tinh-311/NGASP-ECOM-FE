@@ -18,8 +18,8 @@
             <a data-bs-toggle="offcanvas" href="#offcanvas_cart" class="btn btn-light">
               <i class="fa fa-shopping-cart"></i> <span class="ms-1">My cart </span>
             </a>
-            <a *ngIf="currentUser" class="btn btn-light">
-              <i (click)="logOut()" class="fa fa-sign-out-alt"></i> <span class="ms-1 d-none d-sm-inline-block">Sign out  </span>
+            <a (click)="logOut()" *ngIf="currentUser" class="btn btn-light">
+              <i class="fa fa-sign-out-alt"></i> <span class="ms-1 d-none d-sm-inline-block">Sign out  </span>
             </a>
           </div>
           <div class="float-end">

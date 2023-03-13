@@ -4,6 +4,10 @@ import { Catagory } from './../model/Catagory.model';
 import { CategoryService } from '../service/category.service';
 import { ProductService } from '../service/product.service';
 import { Product } from './../model/product.model';
+import { CartService } from '../service/cart.service';
+import { ToastService } from '../service/toast.service';
+import jwt_decode from 'jwt-decode';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-shop',
@@ -28,11 +32,16 @@ export class ShopComponent implements OnInit {
   productArrayFilter: number = 6;
   totalItems: number = 0;
 
+  currentUser: any = {};
+
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private productService: ProductService,
-    private router: Router
+    private cartService: CartService,
+    private toastService: ToastService,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit() {
@@ -44,6 +53,26 @@ export class ShopComponent implements OnInit {
         this.getProducts();
       });
     });
+  }
+
+  addToCart(product: any) {
+    const token = this.cookieService.get('token');
+    this.currentUser = jwt_decode(token);
+    const cart = {
+      userid: this.currentUser.id,
+      productid: product.id,
+      quantity: 1
+    }
+
+    this.cartService.add(cart).subscribe(res => {
+    }, (err) => {
+      switch(err?.error?.text) {
+        case 'inserted': {
+          this.toastService.show('Added to cart!');
+          break;
+        }
+      }
+    })
   }
 
   onRangeChange() {

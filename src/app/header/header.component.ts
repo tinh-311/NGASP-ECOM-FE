@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     const token = this.cookieService.get('token');
-    const remember = this.cookieService.get('remember');
     this.currentUser = jwt_decode(token);
   }
 
