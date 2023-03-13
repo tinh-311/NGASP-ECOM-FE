@@ -30,5 +30,11 @@ export class CategoryComponent implements OnInit {
 
   onClickCategory(category: any) {
     this.clickCategoryEvent.emit(category);
+
+    const navigationExtras: NavigationExtras = {
+      queryParams: { categoryId: category.id }
+    };
+
+    this.router.navigate(['/shop'], navigationExtras);
   }
 }

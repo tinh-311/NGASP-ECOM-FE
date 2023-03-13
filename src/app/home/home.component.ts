@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Catagory } from '../model/Catagory.model';
 import { CategoryService } from '../service/category.service';
+import { Product } from '../model/product.model';
+import { ProductService } from '../service/product.service';
 
 @Component({
   selector: 'app-home',
@@ -12,12 +14,29 @@ export class HomeComponent implements OnInit {
   category: any;
   data: Catagory[]=[];
 
+  products: Product[] = [];
+
   @Output() clickCategoryEvent = new EventEmitter<string>();
 
-  constructor(private categoryList: CategoryService) { }
+  constructor(
+    private categoryList: CategoryService,
+    private productService: ProductService
+  ) { }
 
   ngOnInit(): void {
     this.getCatagory();
+    this.getProducts();
+  }
+
+  getProducts() {
+    const categoryParam: {} = {
+      category: 'electronics',
+      subCategory: 'mobiles'
+    }
+
+    this.productService.getAll(categoryParam).subscribe((data) => {
+      this.products = data as Product[];
+    })
   }
 
   getCatagory() {
@@ -29,7 +48,6 @@ export class HomeComponent implements OnInit {
 
   onCategoryChange(value: any) {
     this.category = value;
-    console.log('🌷🌷🌷 ~ this.category: ', this.category)
     this.isProductSession = true;
   }
 }

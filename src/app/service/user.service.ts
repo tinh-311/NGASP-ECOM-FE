@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { User } from '../model/User.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,19 @@ export class UserService {
   }
 
   constructor(private httpClient: HttpClient) { }
-  apiUrl = 'https://5f0c7a5911b7f60016055e6c.mockapi.io/Api/ahihi';
+  apiUrl = 'http://alo1234.somee.com/api/User';
 
-  //test
-  getPost(): Observable<any> {
-    return this.httpClient.get<any>(this.apiUrl);
+  getAll(): Observable<any> {
+    return this.httpClient.get<any>(this.apiUrl + `/GetUsers`);
   }
 
+  register(user: User) {
+    return this.httpClient.post<any>(this.apiUrl + '/RegisterUser', user);
+  }
+
+
+  deleteUser(id: any): Observable<User[]> {
+    return this.httpClient.delete<User[]>(this.apiUrl + `/User/Delete?id=${id}`)
+  }
 
 }
