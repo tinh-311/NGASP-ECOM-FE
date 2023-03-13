@@ -30,7 +30,7 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 import { ManageCategoriesComponent } from './admin/manage-categories/manage-categories.component';
 import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
@@ -66,7 +66,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     CommonModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
   providers: [TitleCasePipe],
   bootstrap: [AppComponent]

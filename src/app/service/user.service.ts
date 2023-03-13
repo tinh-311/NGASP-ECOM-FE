@@ -11,11 +11,10 @@ export class UserService {
   }
 
   constructor(private httpClient: HttpClient) { }
-  apiUrl = 'https://5f0c7a5911b7f60016055e6c.mockapi.io/Api/ahihi';
+  apiUrl = 'http://alo1234.somee.com/api/User';
 
-  //test
-  getPost(): Observable<any> {
-    return this.httpClient.get<any>(this.apiUrl);
+  getAll(): Observable<any> {
+    return this.httpClient.get<any>(this.apiUrl + `/GetUsers`);
   }
 
 
