@@ -10,7 +10,7 @@
       <div class="row">
         <div *ngFor="let product of products" class="col-lg-3 col-md-6 col-sm-6">
           <figure class="card card-product-grid">
-            <a routerLink="/single" class="img-wrap" >
+            <a (click)="navigateDetails(product)" class="img-wrap" >
               <span class="topbar"> <b class="badge bg-success"> Offer </b> </span>
               <img src="{{ product.imageName }}">
             </a>

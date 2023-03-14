@@ -3,6 +3,7 @@ import { Catagory } from '../model/Catagory.model';
 import { CategoryService } from '../service/category.service';
 import { Product } from '../model/product.model';
 import { ProductService } from '../service/product.service';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -20,12 +21,21 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private categoryList: CategoryService,
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.getCatagory();
     this.getProducts();
+  }
+
+  navigateDetails(product: any) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: { categoryId: product.id }
+    };
+
+    this.router.navigate(['/single'], navigationExtras);
   }
 
   getProducts() {
