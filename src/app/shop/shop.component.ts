@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Catagory } from './../model/Catagory.model';
 import { CategoryService } from '../service/category.service';
@@ -68,6 +68,7 @@ export class ShopComponent implements OnInit {
     }, (err) => {
       switch(err?.error?.text) {
         case 'inserted': {
+          this.cartService.oncartChange(err?.error?.text);
           this.toastService.show('Added to cart!');
           break;
         }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../service/cart.service';
 import { ProductService } from '../service/product.service';
@@ -26,10 +26,29 @@ export class FooterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.cartService.cartItem$.subscribe(cart => {
+      const token = this.cookieService.get('token');
+      this.currentUser = jwt_decode(token);
+      this.getCart();
+    });
+
     const token = this.cookieService.get('token');
-    this.currentUser = jwt_decode(token);
-    this.getCart();
+      this.currentUser = jwt_decode(token);
+      this.getCart();
   }
+
+  getTotalPrice(): number {
+    let totalPrice = 0;
+    if(!this.cartItems?.length) {
+      return 0;
+    }
+
+    for (const cartItem of this.cartItems) {
+      totalPrice += cartItem.quantity * cartItem.product.price;
+    }
+    return totalPrice;
+  }
+
 
   getCart() {
     this.cartService.getCarts(this.currentUser?.id).subscribe((res: any) => {
