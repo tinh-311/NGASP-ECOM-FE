@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { CartService } from '../service/cart.service';
 import { ProductService } from '../service/product.service';
 import { ToastService } from '../service/toast.service';
@@ -57,7 +57,7 @@ export class FooterComponent implements OnInit {
       productId: cartItem?.product?.id,
       quantity: cartItem?.quantity
     }
-    console.log('🌷🌷🌷 ~ parmas: ', parmas)
+
     this.cartService.deleteCarts(parmas).subscribe((res: any) => {
     }, (err) => {
       switch(err?.error?.text) {
@@ -68,6 +68,14 @@ export class FooterComponent implements OnInit {
         }
       }
     })
+  }
+
+  onCartItemClick(cartItem: any) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: { categoryId: cartItem?.product?.id }
+    };
+
+    this.router.navigate(['/single'], navigationExtras);
   }
 
   edit(cartItem: any) {

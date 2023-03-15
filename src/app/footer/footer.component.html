@@ -82,7 +82,7 @@
       <div class="offcanvas-body">
 
         <figure *ngFor="let cartItem of cartItems" class="itemside mb-4">
-          <div class="aside">
+          <div (click)="onCartItemClick(cartItem)" class="aside">
             <img src="{{ cartItem?.product?.imageName }}" class="border img-sm rounded">
           </div>
           <figcaption class="info">

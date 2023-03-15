@@ -50,14 +50,12 @@ export class SingleComponent implements OnInit {
 
   addToCart() {
     const token = this.cookieService.get('token');
-    console.log('🌷🌷🌷 ~ token: ', token)
     this.currentUser = jwt_decode(token);
     const cart = {
       userid: this.currentUser.id,
       productid: this.product.id,
       quantity: this.quantity
     }
-    console.log('🌷🌷🌷 ~ cart: ', cart)
 
     this.cartService.add(cart).subscribe(res => {
     }, (err) => {
