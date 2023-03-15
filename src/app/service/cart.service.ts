@@ -20,9 +20,16 @@ export class CartService {
   ) { }
 
   add(cart: any) {
-    console.log('🌷🌷🌷 ~ cart: ', cart)
     return this.httpClient.post<any>(this.apiUrl + '/Cart/InsertCartItem/'
     +`${cart.userid}/${cart.productid}/${cart.quantity}`, cart);
+  }
+
+  deleteCarts(params: any) {
+    return this.httpClient.delete(
+      this.apiUrl
+      + `/Cart/DeleteCartItem/${params.userId}/${params.productId}/${params.quantity}`,
+      params
+    )
   }
 
   getCarts(userId: string) {

@@ -16,6 +16,8 @@ import { User } from '../model/User.model';
 export class FooterComponent implements OnInit {
   cartItems: any;
   currentUser: any = {};
+  cartItemEdit: any = null;
+  quantityEdit: number = 1;
 
   constructor(
     private router: Router,
@@ -49,11 +51,45 @@ export class FooterComponent implements OnInit {
     return totalPrice;
   }
 
+  deleteCartItem(cartItem: any) {
+    const parmas = {
+      userId: this.currentUser?.id,
+      productId: cartItem?.product?.id,
+      quantity: cartItem?.quantity
+    }
+    console.log('🌷🌷🌷 ~ parmas: ', parmas)
+    this.cartService.deleteCarts(parmas).subscribe((res: any) => {
+    }, (err) => {
+      switch(err?.error?.text) {
+        case 'deleted': {
+          this.toastService.show('Deleted')
+          this.getCart();
+          break;
+        }
+      }
+    })
+  }
+
+  edit(cartItem: any) {
+    if(!this.cartItemEdit) {
+      this.cartItemEdit = cartItem;
+      this.quantityEdit = cartItem?.quantity;
+      return;
+    }
+
+    if(cartItem?.id === this.cartItemEdit?.id) {
+      this.cartItemEdit = null;
+    }
+  }
+
+  cancelEdit() {
+    this.cartItemEdit = null;
+  }
 
   getCart() {
     this.cartService.getCarts(this.currentUser?.id).subscribe((res: any) => {
+      res.cartItems = res?.cartItems?.filter((cartItem: any) => cartItem.quantity > 0);
       this.cartItems = res?.cartItems;
-      console.log('🌷🌷🌷 ~ this.products: ', this.cartItems)
     })
   }
 }
