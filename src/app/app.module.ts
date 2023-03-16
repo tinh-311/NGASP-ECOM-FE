@@ -33,6 +33,7 @@ import { ManageProductsComponent } from './admin/manage-products/manage-products
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ManageUserEditComponent } from './admin/manage-user-edit/manage-user-edit.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ManageUsersComponent,
     ManageCategoriesComponent,
     ManageProductsComponent,
+    ManageUserEditComponent,
   ],
   imports: [
     BrowserModule,
