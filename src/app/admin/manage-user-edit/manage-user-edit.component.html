@@ -1,0 +1,66 @@
+<app-header></app-header>
+<br>
+<form action="" method="post" [formGroup]="userFormEdit" (submit)="onEdit()" class=" form-inline row justify-content-md-center">
+  <div class="col-md-8">
+    <legend>Form Edit</legend>
+    <br>
+    <br>
+    <div class="form-group row">
+      <label for="example-text-input" class="col-md-2 col-form-label">FirstName:</label>
+      <div class="col-md-10">
+        <input class="form-control" type="text" formControlName="firstName">
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="example-text-input" class="col-md-2 col-form-label">LastName:</label>
+      <div class="col-md-10">
+        <input class="form-control" type="text" formControlName="lastName">
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="example-email-input" class="col-md-2 col-form-label">Email:</label>
+      <div class="col-md-10">
+        <input class="form-control" type="email" formControlName="email">
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="example-url-fb" class="col-md-2 col-form-label">Address:</label>
+      <div class="col-md-10">
+        <input class="form-control" type="text" formControlName="address">
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="example-url-twt" class="col-md-2 col-form-label">Mobile:</label>
+      <div class="col-md-10">
+        <input class="form-control" type="text" formControlName="mobile">
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="example-url-web" class="col-md-2 col-form-label">Password:</label>
+      <div class="col-md-10">
+        <input class="form-control" type="text" formControlName="password">
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="example-tel-input" class="col-md-2 col-form-label">Role:</label>
+      <div class="col-md-10">
+        <input class="form-control" type="text" formControlName="role">
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="form-group row">
+      <div class="row-cols-md-6 offset-md-2">
+        <button class="btn btn-primary" type="submit">Edit</button>
+      </div>
+    </div>
+  </div>
+</form>
+<br><br>
+<app-footer></app-footer>
