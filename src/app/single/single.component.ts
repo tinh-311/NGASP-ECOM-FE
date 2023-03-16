@@ -62,7 +62,7 @@ export class SingleComponent implements OnInit {
       switch(err?.error?.text) {
         case 'inserted': {
           this.cartService.oncartChange(err?.error?.text);
-          this.toastService.show('Added to cart!');
+          this.toastService.show(`Added ${this.product?.title} to the cart!`);
           break;
         }
       }

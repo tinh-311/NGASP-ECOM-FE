@@ -40,8 +40,8 @@ export class HomeComponent implements OnInit {
 
   getProducts() {
     const categoryParam: {} = {
-      category: 'electronics',
-      subCategory: 'mobiles'
+      category: 'jewelry',
+      subCategory: 'watches'
     }
 
     this.productService.getAll(categoryParam).subscribe((data) => {

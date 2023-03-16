@@ -69,7 +69,7 @@ export class ShopComponent implements OnInit {
       switch(err?.error?.text) {
         case 'inserted': {
           this.cartService.oncartChange(err?.error?.text);
-          this.toastService.show('Added to cart!');
+          this.toastService.show(`Added ${product?.title} to the cart!`);
           break;
         }
       }
@@ -115,6 +115,10 @@ export class ShopComponent implements OnInit {
   }
 
   formatTitle(title: any): string {
+    if(title?.length <= 31) {
+      return title;
+    }
+
     return title?.slice(0, 32) + '...';
   }
 

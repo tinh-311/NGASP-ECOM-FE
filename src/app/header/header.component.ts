@@ -11,6 +11,7 @@ import jwt_decode from 'jwt-decode';
 })
 export class HeaderComponent implements OnInit {
   currentUser: any;
+  hrefMyCart: string = '';
 
   constructor(
     private router: Router,

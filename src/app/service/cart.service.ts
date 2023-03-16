@@ -38,6 +38,11 @@ export class CartService {
     )
   }
 
+  updateQuantity(cart: any) {
+    return this.httpClient.put<any>(this.apiUrl + '/Cart/UpdateCartItemQuantity/'
+    +`${cart.userid}/${cart.productid}/${cart.quantity}`, cart);
+  }
+
   oncartChange(cart: any) {
     this.cartItemSource.next(cart);
   }

@@ -79,8 +79,14 @@
         <h5 class="offcanvas-title">Your cart ({{ cartItems?.length }}) </h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
+      <div class="d-flex justify-content-center">
+        <span (click)="deleteAllCarts()" class="btn btn-icon btn-light w-50">
+          <i class="text-danger fa fa-trash"></i>
+          <span style="margin-block: auto; margin-left: 6px;"> Delete All </span>
+        </span>
+        <div class="clearfix"></div>
+      </div>
       <div class="offcanvas-body">
-
         <figure *ngFor="let cartItem of cartItems" class="itemside mb-4">
           <div (click)="onCartItemClick(cartItem)" class="aside">
             <img src="{{ cartItem?.product?.imageName }}" class="border img-sm rounded">
@@ -95,9 +101,9 @@
             <div *ngIf="cartItemEdit && cartItemEdit?.id === cartItem?.id" class="float-end">
               <div class="input-group">
                 <div class="input-group-append w-100 d-flex justify-content-end mt-4">
-                  <input type="number" class="form-control w-100" value="{{ cartItem?.quantity }}" [(ngModel)]="quantityEdit" />
+                  <input [min]="1" type="number" class="form-control w-100" [(ngModel)]="quantityEdit" />
                   <button (click)="cancelEdit()" class="btn btn-secondary" style="margin-inline: 6px" type="button">Cancel</button>
-                  <button class="btn btn-primary" type="button">Save</button>
+                  <button (click)="saveEidt(cartItem?.product)" class="btn btn-primary" type="button">Save</button>
                 </div>
               </div>
             </div>

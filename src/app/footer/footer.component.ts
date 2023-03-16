@@ -94,6 +94,32 @@ export class FooterComponent implements OnInit {
     this.cartItemEdit = null;
   }
 
+  saveEidt(product: any) {
+    const token = this.cookieService.get('token');
+    this.currentUser = jwt_decode(token);
+    const cart = {
+      userid: this.currentUser.id,
+      productid: product.id,
+      quantity: this.quantityEdit
+    }
+
+    this.cartService.updateQuantity(cart).subscribe(res => {
+    }, (err) => {
+      switch(err?.error?.text) {
+        case 'updated': {
+          this.cartService.oncartChange(err?.error?.text);
+          this.toastService.show('Updated cart successfully!');
+          this.cancelEdit();
+          break;
+        }
+      }
+    })
+  }
+
+  deleteAllCarts() {
+
+  }
+
   getCart() {
     this.cartService.getCarts(this.currentUser?.id).subscribe((res: any) => {
       res.cartItems = res?.cartItems?.filter((cartItem: any) => cartItem.quantity > 0);
