@@ -13,6 +13,7 @@ import { ProductsComponent } from './products/products.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ManageUserEditComponent } from './admin/manage-user-edit/manage-user-edit.component';
 import { AdminGuard } from './admin.guard';
+import { ManageUserAddComponent } from './admin/manage-user-add/manage-user-add.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path: 'admin', canActivate: [AdminGuard], children: [
     {path: '', component: DashboardComponent},
     {path: 'edit/:id', component: ManageUserEditComponent},
+    {path: 'add', component: ManageUserAddComponent}
   ]},
   {path: '**', component: LoginComponent}
 ];
