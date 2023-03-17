@@ -34,6 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ManageUserEditComponent } from './admin/manage-user-edit/manage-user-edit.component';
+import { ManageUserAddComponent } from './admin/manage-user-add/manage-user-add.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { ManageUserEditComponent } from './admin/manage-user-edit/manage-user-ed
     ManageCategoriesComponent,
     ManageProductsComponent,
     ManageUserEditComponent,
+    ManageUserAddComponent,
   ],
   imports: [
     BrowserModule,
