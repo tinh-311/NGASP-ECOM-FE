@@ -12,6 +12,7 @@ import { ThankyouComponent } from './thankyou/thankyou.component';
 import { ProductsComponent } from './products/products.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ManageUserEditComponent } from './admin/manage-user-edit/manage-user-edit.component';
+import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -26,7 +27,7 @@ const routes: Routes = [
   {path: 'checkout', component: CheckoutComponent},
   {path: 'home/products', component: ProductsComponent},
   {path: 'home/products/:category', component: ProductsComponent},
-  {path: 'admin', children: [
+  {path: 'admin', canActivate: [AdminGuard], children: [
     {path: '', component: DashboardComponent},
     {path: 'edit/:id', component: ManageUserEditComponent},
   ]},

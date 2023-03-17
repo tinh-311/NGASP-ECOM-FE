@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit  {
     }
 
     this.loginService.login(user).subscribe(res => {
-    }, (err) => {
+    }, async (err) => {
       switch(err?.error?.text) {
         case 'invalid': {
           this.toastService.show('User name or password incorrect', 'err');
@@ -64,8 +64,8 @@ export class LoginComponent implements OnInit  {
           if(this.loginForm.value.remember) {
             this.cookieService.set('remember', 'true');
           }
-          this.cookieService.set('token', this.tokenString);
-          this.toastService.show('Login successfully!');
+          await this.cookieService.set('token', this.tokenString);
+          await this.toastService.show('Login successfully!');
           this.router.navigate(['/home']);
           break;
         }
