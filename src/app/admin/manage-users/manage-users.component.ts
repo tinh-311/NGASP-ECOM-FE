@@ -25,7 +25,6 @@ export class ManageUsersComponent {
     this.userService.getAll()
     .subscribe((data: User[]) => {
       this.dataUser = data;
-      console.log("🚀 ~ file: manage-users.component.ts:26 ~ ManageUsersComponent ~ .subscribe ~ data:", data)
     });
   }
 
@@ -36,7 +35,6 @@ export class ManageUsersComponent {
   deleteUser(id: any) {
     this.userService.deleteUser(id).subscribe(res => {
     }, (err) => {
-      console.log("🚀 ~ ManageUsersComponent ~ err:", err)
       this.getUsers();
       switch(err?.error?.text) {
         case 'deleted': {
