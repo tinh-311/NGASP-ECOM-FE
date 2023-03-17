@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/app/model/User.model';
 import { ToastService } from 'src/app/service/toast.service';
@@ -21,7 +21,8 @@ export class ManageUsersComponent {
   constructor(
     private userService: UserService,
     private toastService: ToastService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private elementRef: ElementRef
   ){}
 
   getUsers() {
@@ -33,7 +34,7 @@ export class ManageUsersComponent {
 
   addUser() {
     const dialogRef = this.dialog.open(ManageUserAddComponent, {
-      width: '800px'
+      width: '700px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
