@@ -18,7 +18,6 @@ export class ManageUserEditComponent implements OnInit {
     email: new FormControl(),
     address: new FormControl(),
     mobile: new FormControl(),
-    password: new FormControl(),
     role: new FormControl()
   });
 
@@ -41,7 +40,7 @@ export class ManageUserEditComponent implements OnInit {
         password: new FormControl(data.password),
         role: new FormControl(data.role),
       })
-      // console.log("🚀 ~ file 44:", data)
+      console.log("🚀 ~ file 44:", data)
     })
   }
 

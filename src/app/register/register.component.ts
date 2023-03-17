@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm: any = this.fb.group({
     firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
+    lastName: [''],
     address: ['', Validators.required],
     phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
     email: ['', [Validators.required, Validators.email]],
@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
       lastName: this.registerForm.value.lastName,
       email: this.registerForm.value.email,
       address: this.registerForm.value.address,
-      mobile: this.registerForm.value.mobile,
+      mobile: this.registerForm.value.phoneNumber,
       password: this.registerForm.value.password,
       role: 'user'
     }
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
     this.userService.register(user).subscribe(res => {
     }, (err) => {
       switch(err?.error?.text) {
-        case 'email not available': {
+        case 'insert fail': {
           this.toastService.show('Email already exists', 'err');
           break;
         }
