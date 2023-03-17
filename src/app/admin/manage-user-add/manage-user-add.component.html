@@ -1,78 +1,89 @@
-<section class="vh-100">
-  <div class="container-fluid h-custom">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form [formGroup]="registerForm">
-          <br><br><br><br>
-          <!-- First name input -->
-          <div class="form-outline mb-4">
-            <input formControlName="firstName" type="text" id="form3Example3" class="form-control form-control-lg"
-              placeholder="First name" />
+<h2 mat-dialog-title>Add new user</h2>
+<hr>
+<mat-dialog-content>
+  <form [formGroup]="registerForm">
+    <!-- First name input -->
+    <div class="form-outline mb-4">
+      <input formControlName="firstName" type="text" id="form3Example3" class="form-control form-control-lg"
+        placeholder="First name" />
 
-              <div *ngIf="registerForm.controls['firstName']?.errors && registerForm.controls['firstName'].dirty" class="text-danger">
-                <div *ngIf="registerForm.controls['firstName']?.errors?.required">First Name is required</div>
-              </div>
-          </div>
+        <div *ngIf="registerForm.controls['firstName']?.errors && registerForm.controls['firstName'].dirty" class="text-danger">
+          <div *ngIf="registerForm.controls['firstName']?.errors?.required">First Name is required</div>
+        </div>
+    </div>
 
-          <!-- Last name input -->
-          <div class="form-outline mb-4">
-            <input formControlName="lastName" type="text" id="form3Example3" class="form-control form-control-lg"
-              placeholder="Last name" />
+    <!-- Last name input -->
+    <div class="form-outline mb-4">
+      <input formControlName="lastName" type="text" id="form3Example3" class="form-control form-control-lg"
+        placeholder="Last name" />
 
-            <div *ngIf="registerForm.controls['lastName']?.errors && registerForm.controls['lastName'].dirty" class="text-danger">
-              <div *ngIf="registerForm.controls['lastName']?.errors?.required">Last Name is required</div>
-            </div>
-          </div>
-
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <input formControlName="email" type="email" id="form3Example3" class="form-control form-control-lg"
-              placeholder="Email" />
-
-            <div *ngIf="registerForm.controls['email'].errors && registerForm.controls['email'].dirty" class="text-danger">
-              <div *ngIf="registerForm.controls['email'].errors.required">Email is required</div>
-              <div *ngIf="registerForm.controls['email'].errors.email">Invalid email format</div>
-            </div>
-          </div>
-
-          <!-- Address input -->
-          <div class="form-outline mb-4">
-            <input formControlName="address" type="text" id="form3Example3" class="form-control form-control-lg"
-              placeholder="Address" />
-
-              <div *ngIf="registerForm.controls['address']?.errors && registerForm.controls['address'].dirty" class="text-danger">
-                <div *ngIf="registerForm.controls['address']?.errors?.required">Address is required</div>
-              </div>
-          </div>
-
-          <!-- Phone input -->
-          <div class="form-outline mb-4">
-            <input formControlName="phoneNumber" type="text" id="form3Example3" class="form-control form-control-lg"
-              placeholder="Phone number" />
-
-              <div *ngIf="registerForm.controls['phoneNumber']?.errors && registerForm.controls['phoneNumber'].dirty" class="text-danger">
-                <div *ngIf="registerForm.controls['phoneNumber']?.errors?.required">Phone number is required</div>
-                <div *ngIf="registerForm.controls['phoneNumber']?.errors?.pattern">Invalid phone number format</div>
-              </div>
-          </div>
-
-          <!-- Password input -->
-          <div class="form-outline mb-4">
-            <input formControlName="password" type="text" id="form3Example4" class="form-control form-control-lg"
-              placeholder="Enter Your password" />
-
-              <div *ngIf="registerForm.controls['password']?.errors && registerForm.controls['password'].dirty" class="text-danger">
-                <div *ngIf="registerForm.controls['password']?.errors?.required">Password is required</div>
-              </div>
-          </div>
-
-          <div class="text-center text-lg-start mt-4 pt-2">
-            <button (click)="register()" [disabled]="registerForm.invalid" type="button" class="btn btn-primary btn-lg  "
-              style="padding-left: 2.5rem; padding-right: 2.5rem;">Thêm</button>
-          </div>
-
-        </form>
+      <div *ngIf="registerForm.controls['lastName']?.errors && registerForm.controls['lastName'].dirty" class="text-danger">
+        <div *ngIf="registerForm.controls['lastName']?.errors?.required">Last Name is required</div>
       </div>
     </div>
+
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <input formControlName="email" type="email" id="form3Example3" class="form-control form-control-lg"
+        placeholder="Email" />
+
+      <div *ngIf="registerForm.controls['email'].errors && registerForm.controls['email'].dirty" class="text-danger">
+        <div *ngIf="registerForm.controls['email'].errors.required">Email is required</div>
+        <div *ngIf="registerForm.controls['email'].errors.email">Invalid email format</div>
+      </div>
+    </div>
+
+    <!-- Address input -->
+    <div class="form-outline mb-4">
+      <input formControlName="address" type="text" id="form3Example3" class="form-control form-control-lg"
+        placeholder="Address" />
+
+        <div *ngIf="registerForm.controls['address']?.errors && registerForm.controls['address'].dirty" class="text-danger">
+          <div *ngIf="registerForm.controls['address']?.errors?.required">Address is required</div>
+        </div>
+    </div>
+
+    <!-- Phone input -->
+    <div class="form-outline mb-4">
+      <input formControlName="phoneNumber" type="text" id="form3Example3" class="form-control form-control-lg"
+        placeholder="Phone number" />
+
+        <div *ngIf="registerForm.controls['phoneNumber']?.errors && registerForm.controls['phoneNumber'].dirty" class="text-danger">
+          <div *ngIf="registerForm.controls['phoneNumber']?.errors?.required">Phone number is required</div>
+          <div *ngIf="registerForm.controls['phoneNumber']?.errors?.pattern">Invalid phone number format</div>
+        </div>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <input formControlName="password" type="text" id="form3Example4" class="form-control form-control-lg"
+        placeholder="Enter Your password" />
+
+        <div *ngIf="registerForm.controls['password']?.errors && registerForm.controls['password'].dirty" class="text-danger">
+          <div *ngIf="registerForm.controls['password']?.errors?.required">Password is required</div>
+        </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<hr>
+<mat-dialog-actions class="d-flex justify-content-end">
+  <!-- <button mat-button (click)="onNoClick()">Cancel</button> -->
+  <div class="text-center">
+    <button
+      [style]="{
+        'min-width': '80px'
+      }"
+      (click)="onNoClick()"
+      type="button"
+      class="btn btn-danger"> Cancel </button>
+
+    <button
+      [style]="{
+        'min-width': '80px'
+      }"
+      (click)="register()"
+      [disabled]="registerForm.invalid"
+      type="button"
+      class="btn btn-primary m-lg-2"> Submit </button>
   </div>
-</section>
+</mat-dialog-actions>

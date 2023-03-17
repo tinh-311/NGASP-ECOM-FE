@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/app/model/User.model';
 import { ToastService } from 'src/app/service/toast.service';
 import { UserService } from 'src/app/service/user.service';
+import { ManageUserAddComponent } from '../manage-user-add/manage-user-add.component';
 
 @Component({
   selector: 'app-manage-users',
@@ -18,13 +20,23 @@ export class ManageUsersComponent {
 
   constructor(
     private userService: UserService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    public dialog: MatDialog
   ){}
 
   getUsers() {
     this.userService.getAll()
     .subscribe((data: User[]) => {
       this.dataUser = data;
+    });
+  }
+
+  addUser() {
+    const dialogRef = this.dialog.open(ManageUserAddComponent, {
+      width: '800px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
     });
   }
 

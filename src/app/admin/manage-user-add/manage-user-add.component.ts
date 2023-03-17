@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/User.model';
 import { ToastService } from 'src/app/service/toast.service';
@@ -26,10 +27,15 @@ export class ManageUserAddComponent implements OnInit{
     private router: Router,
     private fb: FormBuilder,
     private toastService: ToastService,
-    private userService: UserService
+    private userService: UserService,
+    public dialogRef: MatDialogRef<ManageUserAddComponent>
   ) {}
 
   ngOnInit(): void {
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
   register() {

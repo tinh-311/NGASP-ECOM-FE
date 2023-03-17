@@ -35,7 +35,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ManageUserEditComponent } from './admin/manage-user-edit/manage-user-edit.component';
 import { ManageUserAddComponent } from './admin/manage-user-add/manage-user-add.component';
-
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -72,8 +72,10 @@ import { ManageUserAddComponent } from './admin/manage-user-add/manage-user-add.
     FormsModule,
     NgxPaginationModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
+  entryComponents: [ManageUserAddComponent],
   providers: [TitleCasePipe],
   bootstrap: [AppComponent]
 })
