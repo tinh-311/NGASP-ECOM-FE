@@ -38,6 +38,7 @@ export class ManageUsersComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.getUsers();
     });
   }
 
