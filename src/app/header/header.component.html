@@ -3,12 +3,15 @@
     <div class="container">
       <div class="row gy-3 align-items-center">
         <div class="col-lg-2 col-sm-4 col-4">
-          <a routerLink="/home" class="navbar-brand">
-            Auth Watch
-          </a> <!-- brand end.// -->
+          <a class="font-weight-bold p-0" routerLink="/home" class="navbar-brand">
+            <h3 class="font-weight-bold"> Auth Watch </h3>
+          </a>
         </div>
         <div class="order-lg-last col-lg-5 col-sm-8 col-8">
           <div class="float-end mr-4">
+            <a (click)="navigateAdminPage()" *ngIf="currentUser && isAdmin" class="btn btn-light">
+              <i class="fa fa-user-shield"></i> <span class="ms-1"> Admin page </span>
+            </a>
             <a *ngIf="!currentUser" (click)="login()" class="btn btn-light">
                 <i class="fa fa-user"></i>  <span class="ms-1 d-none d-sm-inline-block">Sign in  </span>
             </a>
@@ -24,8 +27,8 @@
           </div>
           <div class="float-end">
             <span *ngIf="currentUser" class="btn btn-outline-primary border-0">
-              Hello {{ currentUser.firstName }} {{ currentUser.lastName }}! <br>
-              ({{ currentUser.role | titlecase }})
+              Hello {{ currentUser?.firstName }} {{ currentUser?.lastName }}! <br>
+              ({{ currentUser?.role | titlecase }})
             </span>
           </div>
         </div> <!-- col end.// -->

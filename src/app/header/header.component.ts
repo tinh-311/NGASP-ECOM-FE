@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   hrefMyCart: string = '';
   isHidenBadge: boolean = false;
   cartItemsQuantity: number = 0;
+  isAdmin: boolean = false;
 
   constructor(
     private router: Router,
@@ -25,7 +26,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     const token = this.cookieService.get('token');
-    this.currentUser = jwt_decode(token);
+    if(token) {
+      this.currentUser = jwt_decode(token);
+      this.isAdmin = this.currentUser?.role === 'admin';
+    }
+
     this.getCartItemsQuantity();
     this.isHidenBadge = this.cartItemsQuantity <= 0;
 
@@ -35,7 +40,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getCartItemsQuantity() {
-    this.cartService.getCarts(this.currentUser.id).subscribe((res: any) => {
+    this.cartService.getCarts(this.currentUser?.id).subscribe((res: any) => {
       res.cartItems = res?.cartItems?.filter((cartItem: any) =>
         cartItem.quantity > 0
         && cartItem?.product?.id !== 0
@@ -50,6 +55,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/home']);
     });
+  }
+
+  navigateAdminPage() {
+    this.router.navigate(['/admin']);
   }
 
   logOut() {
