@@ -13,7 +13,7 @@ import { ManageCategoriesEditComponent } from './manage-categories-edit/manage-c
 })
 export class ManageCategoriesComponent implements OnInit{
   currentPage: number = 1;
-  dataCategory: Catagory[] = [];
+  dataCategory: any = [];
   categories: any;
 
   constructor(

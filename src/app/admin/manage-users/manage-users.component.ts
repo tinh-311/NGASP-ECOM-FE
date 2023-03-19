@@ -13,7 +13,7 @@ import { ManageUserEditComponent } from './manage-user-edit/manage-user-edit.com
 })
 export class ManageUsersComponent {
   currentPage: number = 1;
-  dataUser: User[] = [];
+  dataUser: any = [];
 
   ngOnInit(): void {
     this.getUsers();

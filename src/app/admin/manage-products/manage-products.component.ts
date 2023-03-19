@@ -13,7 +13,7 @@ import { ManageProductsEditComponent } from './manage-products-edit/manage-produ
   styleUrls: ['./manage-products.component.scss']
 })
 export class ManageProductsComponent {
-  products: any[] = [];
+  products: any = [];
   categories: any;
   currentPage: number = 1;
 
