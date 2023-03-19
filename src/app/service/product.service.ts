@@ -17,6 +17,26 @@ export class ProductService {
     private httpClient: HttpClient
   ) { }
 
+  add(product: any) {
+    return this.httpClient.post(this.apiUrl
+      + `/Product/InsertProduct`
+      , product
+    )
+  }
+
+  update(product: any) {
+    return this.httpClient.put(this.apiUrl
+      + `/Product/UpdateProduct`
+      , product
+    )
+  }
+
+  delete(id: string) {
+    return this.httpClient.delete(this.apiUrl
+      + `/Product/DelteProduct/${id}`
+    )
+  }
+
   getByCategory(categoryParams: any) {
     return this.httpClient.get(this.apiUrl
       + '/Product/GetProducts'

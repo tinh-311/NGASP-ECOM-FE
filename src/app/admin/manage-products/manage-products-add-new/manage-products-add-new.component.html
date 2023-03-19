@@ -1,0 +1,72 @@
+<h2 mat-dialog-title>Add New Products</h2>
+<hr>
+<mat-dialog-content>
+  <form [formGroup]="addNewForm">
+    <div class="form-outline mb-4">
+      <input formControlName="title" type="text" id="form3Example3" class="form-control form-control-lg"
+        placeholder="Title" />
+
+        <div *ngIf="addNewForm.controls['title']?.errors && addNewForm.controls['title'].dirty" class="text-danger">
+          <div *ngIf="addNewForm.controls['title']?.errors?.required">Title is required</div>
+        </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <input formControlName="description" type="text" id="form3Example3" class="form-control form-control-lg"
+        placeholder="Description" />
+
+      <div *ngIf="addNewForm.controls['description']?.errors && addNewForm.controls['description'].dirty" class="text-danger">
+        <div *ngIf="addNewForm.controls['description']?.errors?.required">Description is required</div>
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <input [min]="0" formControlName="price" type="number" id="form3Example3" class="form-control form-control-lg"
+        placeholder="Price" />
+
+      <div *ngIf="addNewForm.controls['price'].errors && addNewForm.controls['price'].dirty" class="text-danger">
+        <div *ngIf="addNewForm.controls['price'].errors.required"> Price is required</div>
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <input formControlName="imageUrl" type="text" id="form3Example3" class="form-control form-control-lg"
+        placeholder="Image Url" />
+
+      <div *ngIf="addNewForm.controls['imageUrl'].errors && addNewForm.controls['imageUrl'].dirty" class="text-danger">
+        <div *ngIf="addNewForm.controls['imageUrl'].errors.required"> Image Url is required</div>
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <select formControlName="category" (change)="onChangeCategory()" class="form-control form-control-lg">
+        <option value="">-- Select Category --</option>
+        <option *ngFor="let category of categories" [value]="category?.id">{{ category?.category | titlecase }}</option>
+      </select>
+      <div *ngIf="addNewForm.controls['category'].errors && addNewForm.controls['category'].dirty" class="text-danger">
+        <div *ngIf="addNewForm.controls['category'].errors.required"> Category is required</div>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<hr>
+<mat-dialog-actions class="d-flex justify-content-end">
+  <div class="text-center">
+    <button
+      [style]="{
+        'min-width': '80px'
+      }"
+      (click)="onNoClick()"
+      type="button"
+      class="btn btn-danger"> Cancel </button>
+
+    <button
+      [style]="{
+        'min-width': '80px'
+      }"
+      (click)="add()"
+      [disabled]="addNewForm.invalid"
+      type="button"
+      class="btn btn-primary m-lg-2"> Submit </button>
+  </div>
+</mat-dialog-actions>

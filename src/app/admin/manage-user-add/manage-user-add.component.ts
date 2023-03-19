@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/User.model';
 import { ToastService } from 'src/app/service/toast.service';
@@ -28,7 +28,8 @@ export class ManageUserAddComponent implements OnInit{
     private fb: FormBuilder,
     private toastService: ToastService,
     private userService: UserService,
-    public dialogRef: MatDialogRef<ManageUserAddComponent>
+    public dialogRef: MatDialogRef<ManageUserAddComponent>,
+
   ) {}
 
   ngOnInit(): void {

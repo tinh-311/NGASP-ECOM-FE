@@ -33,6 +33,9 @@ import { ManageUserEditComponent } from './admin/manage-user-edit/manage-user-ed
 import { ManageUserAddComponent } from './admin/manage-user-add/manage-user-add.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatBadgeModule} from '@angular/material/badge';
+import { ManageProductsAddNewComponent } from './admin/manage-products/manage-products-add-new/manage-products-add-new.component';
+import { ImageViewComponent } from './image-view/image-view.component';
+import { ManageProductsEditComponent } from './admin/manage-products/manage-products-edit/manage-products-edit.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,9 @@ import {MatBadgeModule} from '@angular/material/badge';
     ManageProductsComponent,
     ManageUserEditComponent,
     ManageUserAddComponent,
+    ManageProductsAddNewComponent,
+    ImageViewComponent,
+    ManageProductsEditComponent,
   ],
   imports: [
     BrowserModule,

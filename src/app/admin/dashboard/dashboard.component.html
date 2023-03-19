@@ -1,4 +1,4 @@
-<div id="mySidenav" class="sidenav" [ngClass]="status ? 'active' : 'inactive'">
+<div id="mySidenav h-100" class="sidenav" [ngClass]="status ? 'active' : 'inactive'">
   <p class="logo"><span>A</span><b [ngClass]="status ? 'hidden' : 'visible'">-Watch</b></p>
   <a (click)="onChangeSession(NAV_ITEM.Dashboard)" [ngClass]="{'active': sessison === NAV_ITEM.Dashboard }" [style]="{'cursor':'pointer'}" class="icon-a"><i class="fa fa-dashboard icons"></i>   <span [ngClass]="status ? 'hidden' : 'visible'"> {{ NAV_ITEM.Dashboard }} </span></a>
   <a (click)="onChangeSession(NAV_ITEM.ManageUsers)" [ngClass]="{'active': sessison === NAV_ITEM.ManageUsers}" [style]="{'cursor':'pointer'}" class="icon-a"><i class="fa fa-users icons"></i>   <span [ngClass]="status ? 'hidden' : 'visible'"> {{ NAV_ITEM.ManageUsers }} </span></a>
