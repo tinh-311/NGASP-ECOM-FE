@@ -24,4 +24,20 @@ export class CategoryService {
       + `?id=${id}`
     );
   }
+
+  //http://alo1234.somee.com/api/Category/UpdateCategory/id
+  updateCategory(data: any): Observable<Catagory[]> {
+    return this.httpClient.put<Catagory[]>(this.apiUrl + '/Category/UpdateCategory/id', data);
+  }
+
+  //http://alo1234.somee.com/api/Category/DeleteCategory?id=1
+  deleteCategory(id: any): Observable<any> {
+    return this.httpClient.delete<any>(this.apiUrl + `/Category/DeleteCategory?id=${id}`);
+  }
+
+  //http://alo1234.somee.com/api/Category/InsertProductCategory
+  addCategory(data: any): Observable<any> {
+    return this.httpClient.post<any>(this.apiUrl + `/Category/InsertProductCategory`, data);
+  }
+
 }

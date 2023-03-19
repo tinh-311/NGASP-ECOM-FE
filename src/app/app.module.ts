@@ -29,13 +29,15 @@ import { ManageProductsComponent } from './admin/manage-products/manage-products
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { ManageUserEditComponent } from './admin/manage-user-edit/manage-user-edit.component';
-import { ManageUserAddComponent } from './admin/manage-user-add/manage-user-add.component';
+import { ManageUserEditComponent } from './admin/manage-users/manage-user-edit/manage-user-edit.component';
+import { ManageUserAddComponent } from './admin/manage-users/manage-user-add/manage-user-add.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatBadgeModule} from '@angular/material/badge';
 import { ManageProductsAddNewComponent } from './admin/manage-products/manage-products-add-new/manage-products-add-new.component';
 import { ImageViewComponent } from './image-view/image-view.component';
 import { ManageProductsEditComponent } from './admin/manage-products/manage-products-edit/manage-products-edit.component';
+import { ManageCategoriesAddNewComponent } from './admin/manage-categories/manage-categories-add-new/manage-categories-add-new.component';
+import { ManageCategoriesEditComponent } from './admin/manage-categories/manage-categories-edit/manage-categories-edit.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { ManageProductsEditComponent } from './admin/manage-products/manage-prod
     ManageProductsAddNewComponent,
     ImageViewComponent,
     ManageProductsEditComponent,
+    ManageCategoriesAddNewComponent,
+    ManageCategoriesEditComponent,
   ],
   imports: [
     BrowserModule,

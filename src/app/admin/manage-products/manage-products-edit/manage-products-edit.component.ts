@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/service/product.service';
 import { ToastService } from 'src/app/service/toast.service';
-import { ManageUserAddComponent } from '../../manage-user-add/manage-user-add.component';
+import { ManageUserAddComponent } from '../../manage-users/manage-user-add/manage-user-add.component';
 
 @Component({
   selector: 'app-manage-products-edit',

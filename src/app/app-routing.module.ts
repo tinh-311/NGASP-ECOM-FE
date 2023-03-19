@@ -11,9 +11,9 @@ import { SingleComponent } from './single/single.component';
 import { ThankyouComponent } from './thankyou/thankyou.component';
 import { ProductsComponent } from './products/products.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { ManageUserEditComponent } from './admin/manage-user-edit/manage-user-edit.component';
+import { ManageUserEditComponent } from './admin/manage-users/manage-user-edit/manage-user-edit.component';
 import { AdminGuard } from './admin.guard';
-import { ManageUserAddComponent } from './admin/manage-user-add/manage-user-add.component';
+import { ManageUserAddComponent } from './admin/manage-users/manage-user-add/manage-user-add.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},

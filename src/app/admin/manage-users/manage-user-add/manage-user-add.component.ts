@@ -14,6 +14,8 @@ import { UserService } from 'src/app/service/user.service';
 export class ManageUserAddComponent implements OnInit{
   hide = true;
 
+  user: any;
+
   registerForm: any = this.fb.group({
     firstName: ['', Validators.required],
     lastName: [''],
@@ -33,6 +35,16 @@ export class ManageUserAddComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
+  }
+
+  getUsers() {
+    this.userService.getAll().subscribe((res: any) => {
+      this.user = res;
+    })
+  }
+
+  onChangeCategory() {
+
   }
 
   onNoClick(): void {
