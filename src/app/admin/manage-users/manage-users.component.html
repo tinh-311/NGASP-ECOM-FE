@@ -1,1 +1,40 @@
-<p>manage-users works!</p>
+<form action="" class="form-inline" method="post" role="form">
+  <button type="submit" (click)="addUser()" class="btn btn-primary">Add new</button>
+</form>
+
+<hr>
+
+<div class="mat-elevation-z8" id="father">
+  <table class="table ">
+    <thead class="head">
+      <tr>
+        <th>No.</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Mobile</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+      <tbody>
+        <tr *ngFor="let item of dataUser | paginate: { itemsPerPage: 5, currentPage: currentPage }; let i = index">
+          <td scope="row">{{ (currentPage - 1) * 5 + i + 1 }}</td>
+          <td>{{item?.firstName}} {{item?.lastName}}</td>
+          <td>{{item?.email}}</td>
+          <td>{{item?.address}}</td>
+          <td>{{item?.mobile}}</td>
+          <td>{{item?.role}}</td>
+          <td>
+            <button class="btn btn-primary mr-1" (click)="updateUser(item)" >Update</button>
+            <button class="btn btn-danger mr-1" [disabled]="item.role === 'admin'" (click)="deleteUser(item.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+  <div class="pagination">
+    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+    <span style="margin-left: 6px; margin-top: 4px;"> {{ dataUser?.length}} Items </span>
+  </div>
+</div>
+

@@ -1,0 +1,82 @@
+<h2 mat-dialog-title>Edit Users</h2>
+<hr>
+<mat-dialog-content>
+  <form [formGroup]="editForm">
+    <div class="form-outline mb-4">
+      <input formControlName="firstName" type="text" id="form3Example3" class="form-control form-control-lg"
+        placeholder="FirstName" />
+
+        <div *ngIf="editForm.controls['firstName']?.errors && editForm.controls['firstName'].dirty" class="text-danger">
+          <div *ngIf="editForm.controls['firstName']?.errors?.required">FirstName is required</div>
+        </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <input formControlName="lastName" type="text" id="form3Example3" class="form-control form-control-lg"
+        placeholder="LastName" />
+
+      <div *ngIf="editForm.controls['lastName']?.errors && editForm.controls['lastName'].dirty" class="text-danger">
+        <div *ngIf="editForm.controls['lastName']?.errors?.required">LastName is required</div>
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <input formControlName="address" type="text" id="form3Example3" class="form-control form-control-lg"
+        placeholder="Address" />
+
+      <div *ngIf="editForm.controls['address'].errors && editForm.controls['address'].dirty" class="text-danger">
+        <div *ngIf="editForm.controls['address'].errors.required">Address is required</div>
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <input formControlName="phoneNumber" type="text" id="form3Example3" class="form-control form-control-lg"
+        placeholder="Phone Number" />
+
+      <div *ngIf="editForm.controls['phoneNumber'].errors && editForm.controls['phoneNumber'].dirty" class="text-danger">
+        <div *ngIf="editForm.controls['phoneNumber'].errors.required"> Phone Number is required</div>
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <input formControlName="email" type="text" id="form3Example3" class="form-control form-control-lg"
+        placeholder="Email" />
+
+      <div *ngIf="editForm.controls['email'].errors && editForm.controls['email'].dirty" class="text-danger">
+        <div *ngIf="editForm.controls['email'].errors.required"> Email is required</div>
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <select formControlName="role" class="form-control form-control-lg">
+        <option value="">-- Select Category --</option>
+        <option *ngFor="let user of roleUser">{{ user?.role | titlecase }}</option>
+      </select>
+      <div *ngIf="editForm.controls['role'].errors && editForm.controls['role'].dirty" class="text-danger">
+        <div *ngIf="editForm.controls['role'].errors.required"> Role is required</div>
+      </div>
+    </div>
+
+  </form>
+</mat-dialog-content>
+<hr>
+<mat-dialog-actions class="d-flex justify-content-end">
+  <div class="text-center">
+    <button
+      [style]="{
+        'min-width': '80px'
+      }"
+      (click)="onNoClick()"
+      type="button"
+      class="btn btn-danger"> Cancel </button>
+
+    <button
+      [style]="{
+        'min-width': '80px'
+      }"
+      (click)="onEdit()"
+      [disabled]="editForm.invalid"
+      type="button"
+      class="btn btn-primary m-lg-2"> Submit </button>
+  </div>
+</mat-dialog-actions>

@@ -1,0 +1,72 @@
+<h2 mat-dialog-title>Edit Products</h2>
+<hr>
+<mat-dialog-content>
+  <form [formGroup]="editForm">
+    <div class="form-outline mb-4">
+      <input formControlName="title" type="text" id="form3Example3" class="form-control form-control-lg"
+        placeholder="Title" />
+
+        <div *ngIf="editForm.controls['title']?.errors && editForm.controls['title'].dirty" class="text-danger">
+          <div *ngIf="editForm.controls['title']?.errors?.required">Title is required</div>
+        </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <input formControlName="description" type="text" id="form3Example3" class="form-control form-control-lg"
+        placeholder="Description" />
+
+      <div *ngIf="editForm.controls['description']?.errors && editForm.controls['description'].dirty" class="text-danger">
+        <div *ngIf="editForm.controls['description']?.errors?.required">Description is required</div>
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <input [min]="0" formControlName="price" type="number" id="form3Example3" class="form-control form-control-lg"
+        placeholder="Price" />
+
+      <div *ngIf="editForm.controls['price'].errors && editForm.controls['price'].dirty" class="text-danger">
+        <div *ngIf="editForm.controls['price'].errors.required"> Price is required</div>
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <input formControlName="imageUrl" type="text" id="form3Example3" class="form-control form-control-lg"
+        placeholder="Image Url" />
+
+      <div *ngIf="editForm.controls['imageUrl'].errors && editForm.controls['imageUrl'].dirty" class="text-danger">
+        <div *ngIf="editForm.controls['imageUrl'].errors.required"> Image Url is required</div>
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <select formControlName="category" class="form-control form-control-lg">
+        <option value="">-- Select Category --</option>
+        <option *ngFor="let category of categories" [value]="category?.id">{{ category?.category | titlecase }}</option>
+      </select>
+      <div *ngIf="editForm.controls['category'].errors && editForm.controls['category'].dirty" class="text-danger">
+        <div *ngIf="editForm.controls['category'].errors.required"> Category is required</div>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<hr>
+<mat-dialog-actions class="d-flex justify-content-end">
+  <div class="text-center">
+    <button
+      [style]="{
+        'min-width': '80px'
+      }"
+      (click)="onNoClick()"
+      type="button"
+      class="btn btn-danger"> Cancel </button>
+
+    <button
+      [style]="{
+        'min-width': '80px'
+      }"
+      (click)="edit()"
+      [disabled]="editForm.invalid"
+      type="button"
+      class="btn btn-primary m-lg-2"> Submit </button>
+  </div>
+</mat-dialog-actions>

@@ -1,1 +1,42 @@
-<p>manage-products works!</p>
+<form action="" class="form-inline" method="post" role="form">
+  <button type="submit" (click)="add()" class="btn btn-primary">Add new</button>
+</form>
+
+<hr>
+
+<div class="mat-elevation-z8" id="father">
+  <table class="table ">
+    <thead class="head">
+      <tr>
+        <th>No.</th>
+        <th>Image</th>
+        <th style="width: 300px;">Title</th>
+        <th style="width: 400px;">Description</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+      <tbody>
+        <tr *ngFor="let item of products | paginate: { itemsPerPage: 5, currentPage: currentPage }; let i = index">
+          <td scope="row">{{ (currentPage - 1) * 5 + i + 1 }}</td>
+          <td>
+            <img (click)="viewImage(item?.imageName)" style="width: 50px; height: 50px; border-radius: 9rem;" src="{{ item?.imageName }}">
+          </td>
+          <td>{{item?.title}}</td>
+          <td>{{formatDescription(item?.description)}}</td>
+          <td>{{item?.price}}</td>
+          <td>{{getCategoryName(item?.productCategory?.id) | titlecase}}</td>
+          <td>
+            <button (click)="update(item)" class="btn btn-primary mr-1" >Update</button>
+            <button class="btn btn-danger mr-1" (click)="deleteProduct(item)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+  <div class="pagination">
+    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+    <span style="margin-left: 6px; margin-top: 4px;"> {{ products?.length }} Items </span>
+  </div>
+</div>
+

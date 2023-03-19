@@ -13,15 +13,11 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ThankyouComponent } from './thankyou/thankyou.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-
-
 import {MatIconModule} from '@angular/material/icon';
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-
-
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule, TitleCasePipe  } from '@angular/common';
 import { ProductsComponent } from './products/products.component';
@@ -30,8 +26,18 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 import { ManageCategoriesComponent } from './admin/manage-categories/manage-categories.component';
 import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ManageUserEditComponent } from './admin/manage-users/manage-user-edit/manage-user-edit.component';
+import { ManageUserAddComponent } from './admin/manage-users/manage-user-add/manage-user-add.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatBadgeModule} from '@angular/material/badge';
+import { ManageProductsAddNewComponent } from './admin/manage-products/manage-products-add-new/manage-products-add-new.component';
+import { ImageViewComponent } from './image-view/image-view.component';
+import { ManageProductsEditComponent } from './admin/manage-products/manage-products-edit/manage-products-edit.component';
+import { ManageCategoriesAddNewComponent } from './admin/manage-categories/manage-categories-add-new/manage-categories-add-new.component';
+import { ManageCategoriesEditComponent } from './admin/manage-categories/manage-categories-edit/manage-categories-edit.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +58,13 @@ import { ManageProductsComponent } from './admin/manage-products/manage-products
     ManageUsersComponent,
     ManageCategoriesComponent,
     ManageProductsComponent,
+    ManageUserEditComponent,
+    ManageUserAddComponent,
+    ManageProductsAddNewComponent,
+    ImageViewComponent,
+    ManageProductsEditComponent,
+    ManageCategoriesAddNewComponent,
+    ManageCategoriesEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +76,14 @@ import { ManageProductsComponent } from './admin/manage-products/manage-products
     MatButtonModule,
     HttpClientModule,
     CommonModule,
+    FormsModule,
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatBadgeModule
   ],
+  entryComponents: [ManageUserAddComponent],
   providers: [TitleCasePipe],
   bootstrap: [AppComponent]
 })
