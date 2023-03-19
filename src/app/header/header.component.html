@@ -26,9 +26,11 @@
             </a>
           </div>
           <div class="float-end">
-            <span *ngIf="currentUser" class="btn btn-outline-primary border-0">
-              Hello {{ currentUser?.firstName }} {{ currentUser?.lastName }}! <br>
-              ({{ currentUser?.role | titlecase }})
+            <span>
+              <img style="width: 40px; height: 40px; border-radius: 9rem;" src="{{ currentUser?.userAvt }}">
+            </span>
+            <span *ngIf="currentUser">
+              Hello {{ currentUser?.firstName }} {{ currentUser?.lastName }}!
             </span>
           </div>
         </div> <!-- col end.// -->

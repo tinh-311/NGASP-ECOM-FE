@@ -7,4 +7,5 @@ export class User {
   mobile?: string;
   password?: string;
   role?: string;
+  userAvt?: string;
 }
