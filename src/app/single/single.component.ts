@@ -29,7 +29,7 @@ export class SingleComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.productId = params['categoryId'];
+      this.productId = params['productId'];
       this.productService.getById(this.productId).subscribe((data) => {
         this.product = data as Product;
       })

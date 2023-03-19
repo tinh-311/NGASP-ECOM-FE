@@ -36,7 +36,11 @@ export class HeaderComponent implements OnInit {
 
   getCartItemsQuantity() {
     this.cartService.getCarts(this.currentUser.id).subscribe((res: any) => {
-      res.cartItems = res?.cartItems?.filter((cartItem: any) => cartItem.quantity > 0);
+      res.cartItems = res?.cartItems?.filter((cartItem: any) =>
+        cartItem.quantity > 0
+        && cartItem?.product?.id !== 0
+        && cartItem.product?.title !== ''
+      );
       this.cartItemsQuantity = res?.cartItems?.length;
       this.isHidenBadge = this.cartItemsQuantity <= 0;
     });

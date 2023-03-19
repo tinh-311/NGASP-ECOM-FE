@@ -124,7 +124,7 @@ export class ShopComponent implements OnInit {
 
   navigateDetails(product: any) {
     const navigationExtras: NavigationExtras = {
-      queryParams: { categoryId: product.id }
+      queryParams: { productId: product.id }
     };
 
     this.router.navigate(['/single'], navigationExtras);
