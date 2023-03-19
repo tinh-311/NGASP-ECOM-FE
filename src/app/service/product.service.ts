@@ -17,10 +17,16 @@ export class ProductService {
     private httpClient: HttpClient
   ) { }
 
-  getAll(categoryParams: any) {
+  getByCategory(categoryParams: any) {
     return this.httpClient.get(this.apiUrl
       + '/Product/GetProducts'
       + `?category=${categoryParams?.category}&subcategory=${categoryParams?.subCategory}&count=10000`
+    );
+  }
+
+  get() {
+    return this.httpClient.get(this.apiUrl
+      + '/Product/GetProductsByQuantity/1000000'
     );
   }
 

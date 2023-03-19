@@ -103,7 +103,7 @@ export class ShopComponent implements OnInit {
       subCategory: this.categoryData.subCategory
     }
 
-    this.productService.getAll(categoryParam).subscribe((data) => {
+    this.productService.getByCategory(categoryParam).subscribe((data) => {
       this.products = data as Product[];
       this.productsOriginal = this.products;
       this.totalItems = this.products.length;

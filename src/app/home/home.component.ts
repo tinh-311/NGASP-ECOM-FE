@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
       subCategory: 'watches'
     }
 
-    this.productService.getAll(categoryParam).subscribe((data) => {
+    this.productService.getByCategory(categoryParam).subscribe((data) => {
       this.products = data as Product[];
     })
   }
