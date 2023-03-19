@@ -63,6 +63,7 @@ export class FooterComponent implements OnInit {
       switch(err?.error?.text) {
         case 'deleted': {
           this.toastService.show('Deleted')
+          this.cartService.oncartChange(err?.error?.text);
           this.getCart();
           break;
         }

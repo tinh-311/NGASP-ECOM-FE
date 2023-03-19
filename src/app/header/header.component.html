@@ -8,14 +8,14 @@
           </a> <!-- brand end.// -->
         </div>
         <div class="order-lg-last col-lg-5 col-sm-8 col-8">
-          <div class="float-end">
+          <div class="float-end mr-4">
             <a *ngIf="!currentUser" (click)="login()" class="btn btn-light">
                 <i class="fa fa-user"></i>  <span class="ms-1 d-none d-sm-inline-block">Sign in  </span>
             </a>
             <a class="btn btn-light">
               <i class="fa fa-heart"></i>  <span class="ms-1 d-none d-sm-inline-block">Wishlist</span>
             </a>
-            <button [disabled]="!currentUser" data-bs-toggle="offcanvas" href="#offcanvas_cart" class="btn btn-light">
+            <button matBadgeSize="small" [matBadge]="cartItemsQuantity" [matBadgeHidden]="isHidenBadge" [disabled]="!currentUser" data-bs-toggle="offcanvas" href="#offcanvas_cart" class="btn btn-light">
               <i class="fa fa-shopping-cart"></i> <span class="ms-1">My cart </span>
             </button>
             <a (click)="logOut()" *ngIf="currentUser" class="btn btn-light">
