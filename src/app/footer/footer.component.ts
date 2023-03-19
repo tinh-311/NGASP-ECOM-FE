@@ -5,7 +5,6 @@ import { ProductService } from '../service/product.service';
 import { ToastService } from '../service/toast.service';
 import { CookieService } from 'ngx-cookie-service';
 import jwt_decode from 'jwt-decode';
-import { User } from '../model/User.model';
 
 
 @Component({
@@ -130,5 +129,9 @@ export class FooterComponent implements OnInit {
       );
       this.cartItems = res?.cartItems;
     })
+  }
+
+  checkout() {
+    this.router.navigate(['/checkout']);
   }
 }

@@ -40,10 +40,6 @@
           <div class="form-outline mb-4">
             <input formControlName="lastName" type="text" id="form3Example3" class="form-control form-control-lg"
               placeholder="Last name" />
-
-            <div *ngIf="registerForm.controls['lastName']?.errors && registerForm.controls['lastName'].dirty" class="text-danger">
-              <div *ngIf="registerForm.controls['lastName']?.errors?.required">Last Name is required</div>
-            </div>
           </div>
 
           <!-- Email input -->
