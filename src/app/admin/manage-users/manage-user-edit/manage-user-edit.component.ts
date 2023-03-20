@@ -33,7 +33,7 @@ export class ManageUserEditComponent implements OnInit {
   buildForm() {
     this.editForm = this.fb.group({
         firstName: [this.user?.firstName , Validators.required],
-        lastName: [this.user?.lastName , Validators.required],
+        lastName: [this.user?.lastName],
         email: [this.user?.email, [Validators.required]],
         address: [this.user?.address, [Validators.required]],
         phoneNumber: [this.user?.mobile, [Validators.required]],
