@@ -45,6 +45,9 @@ export class ShopComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const token = this.cookieService.get('token');
+    this.currentUser = jwt_decode(token);
+
     this.route.queryParams.subscribe(params => {
       this.categoryId = params['categoryId'];
       this.categoryService.getById(this.categoryId)
@@ -56,8 +59,6 @@ export class ShopComponent implements OnInit {
   }
 
   addToCart(product: any) {
-    const token = this.cookieService.get('token');
-    this.currentUser = jwt_decode(token);
     const cart = {
       userid: this.currentUser.id,
       productid: product.id,

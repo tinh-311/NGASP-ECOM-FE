@@ -28,6 +28,9 @@ export class SingleComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const token = this.cookieService.get('token');
+    this.currentUser = jwt_decode(token);
+
     this.route.queryParams.subscribe(params => {
       this.productId = params['productId'];
       this.productService.getById(this.productId).subscribe((data) => {
@@ -49,8 +52,6 @@ export class SingleComponent implements OnInit {
   }
 
   addToCart() {
-    const token = this.cookieService.get('token');
-    this.currentUser = jwt_decode(token);
     const cart = {
       userid: this.currentUser.id,
       productid: this.product.id,

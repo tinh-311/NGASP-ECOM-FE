@@ -44,6 +44,8 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   ){ }
 
   ngOnInit(): void {
+    const token = this.cookieService.get('token');
+    this.currentUser = jwt_decode(token);
     this.getProducts();
   }
 
@@ -51,8 +53,6 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   }
 
   addToCart(product: any) {
-    const token = this.cookieService.get('token');
-    this.currentUser = jwt_decode(token);
     const cart = {
       userid: this.currentUser.id,
       productid: product.id,
