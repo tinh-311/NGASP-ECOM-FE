@@ -68,17 +68,15 @@
             </div>
 
             <div class="float-end">
-              <button class="btn btn-light">Cancel</button>
-              <button [disabled]="shipInfoForm.invalid || checkoutForm.Invalid" class="btn btn-success">Continue</button>
+              <!-- <button class="btn btn-light">Cancel</button> -->
+              <button (click)="checkout()" [disabled]="shipInfoForm.invalid || checkoutForm.Invalid" class="btn btn-success">Continue</button>
             </div>
           </form>
-        </div> <!-- card-body end.// -->
-      </article> <!-- card end.// -->
-      <!-- ============== COMPONENT CHECKOUT .// =============== -->
+        </div>
+      </article>
 
-    </main> <!-- col.// -->
+    </main>
     <aside class="col-xl-4 col-lg-4">
-      <!-- ============== COMPONENT SUMMARY =============== -->
       <article class="ms-lg-4 mt-4 mt-lg-0" style="max-width: 320px">
           <h6 class="card-title">Summary</h6>
 
@@ -112,7 +110,7 @@
               <img src="{{ cartItem?.product?.imageName }}" class="border img-sm rounded">
             </div>
             <figcaption class="info">
-              <a class="btn btn-icon btn-light float-end"><i class="fa fa-trash"></i></a>
+              <a (click)="deleteCartItem(cartItem)" class="btn btn-icon btn-light float-end"><i class="fa fa-trash"></i></a>
               <p> {{ cartItem.product.title }} </p>
               <span class="text-muted">{{ cartItem?.quantity }} x {{ cartItem?.product?.price | currency:'VND' }} </span> <br>
               <a (click)="edit(cartItem)" class="btn btn-icon btn-light float-end"><i class="fa fa-edit"></i></a>
@@ -130,13 +128,9 @@
             </figcaption>
           </section>
       </article>
-      <!-- ============== COMPONENT SUMMARY .// =============== -->
-    </aside> <!-- col.// -->
-  </div> <!-- row.// -->
-
+    </aside>
+  </div>
   <br><br>
-
-  </div> <!-- container .//  -->
+  </div>
   </section>
-  <!-- ============== SECTION END// ============== -->
   <app-footer></app-footer>

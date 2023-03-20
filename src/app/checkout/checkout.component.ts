@@ -6,6 +6,7 @@ import { ToastService } from '../service/toast.service';
 import jwt_decode from 'jwt-decode';
 import { PaymentMenthodService } from '../service/payment-menthod.service';
 import { CartService } from '../service/cart.service';
+import { PaymentService } from '../service/payment.service';
 
 @Component({
   selector: 'app-checkout',
@@ -42,6 +43,7 @@ export class CheckoutComponent {
     private cookieService: CookieService,
     private paymentMenthodsService: PaymentMenthodService,
     private cartService: CartService,
+    private paymentService: PaymentService
   ) {}
 
   ngOnInit() {
@@ -57,6 +59,44 @@ export class CheckoutComponent {
 
     this.buildCheckoutForm();
     this.buildShipInfoForm();
+  }
+
+  checkout() {
+    const paymentMenthod = this.paymentMenthods.find((res: any) => res?.id === this.shipInfoForm.value.paymentMenthod);
+    const paymentParams: any = {
+      'paymentMethod': paymentMenthod[0],
+      'user': this.currentUser,
+      'totalAmount': this.getTotalPrice() +  this.shippingCost - this.discount,
+      'shipping charges': this.shippingCost,
+      'amountReduced': 0,
+      'amountPaid': 0,
+    }
+    console.log('🌷🌷🌷 ~ paymentParams: ', paymentParams)
+
+    this.paymentService.add(paymentParams).subscribe((res: any) => {
+    }, (err) => {
+      console.log('🌷🌷🌷 ~ err: ', err)
+    })
+  }
+
+  deleteCartItem(cartItem: any) {
+    const parmas = {
+      userId: this.currentUser?.id,
+      productId: cartItem?.product?.id,
+      quantity: cartItem?.quantity
+    }
+
+    this.cartService.deleteCarts(parmas).subscribe((res: any) => {
+    }, (err) => {
+      switch(err?.error?.text) {
+        case 'deleted': {
+          this.toastService.show('Deleted')
+          this.cartService.oncartChange(err?.error?.text);
+          this.getCart();
+          break;
+        }
+      }
+    })
   }
 
   edit(cartItem: any) {
@@ -96,6 +136,7 @@ export class CheckoutComponent {
         case 'updated': {
           this.cartService.oncartChange(err?.error?.text);
           this.toastService.show('Updated cart successfully!');
+          this.getCart();
           this.cancelEdit();
           break;
         }
