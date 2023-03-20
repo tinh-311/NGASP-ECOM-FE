@@ -22,6 +22,7 @@ export class ManageUserAddComponent implements OnInit{
     address: ['', Validators.required],
     phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
     email: ['', [Validators.required, Validators.email]],
+    imageUrl: ['', [Validators.required]],
     password: ['', Validators.required]
   });
 

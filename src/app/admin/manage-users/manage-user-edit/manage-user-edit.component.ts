@@ -19,7 +19,6 @@ export class ManageUserEditComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.data.user;
     this.getUser();
-    console.log("🚀 ~ ManageUserEditComponent ~ data:", this.data.user)
 
     this.buildForm();
   }
@@ -41,6 +40,7 @@ export class ManageUserEditComponent implements OnInit {
         address: [this.user?.address, [Validators.required]],
         phoneNumber: [this.user?.mobile, [Validators.required]],
         password: [this.user?.password, [Validators.required]],
+        imageUrl: [this.user?.userAvt, [Validators.required]],
         role: [this.user?.role, [Validators.required]],
     });
   }

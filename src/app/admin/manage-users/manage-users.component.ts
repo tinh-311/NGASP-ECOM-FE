@@ -5,6 +5,7 @@ import { ToastService } from 'src/app/service/toast.service';
 import { UserService } from 'src/app/service/user.service';
 import { ManageUserAddComponent } from './manage-user-add/manage-user-add.component';
 import { ManageUserEditComponent } from './manage-user-edit/manage-user-edit.component';
+import { ImageViewComponent } from 'src/app/image-view/image-view.component';
 
 @Component({
   selector: 'app-manage-users',
@@ -25,6 +26,16 @@ export class ManageUsersComponent {
     public dialog: MatDialog,
     private elementRef: ElementRef
   ){}
+
+  viewImage(url: string) {
+    const dialogRef = this.dialog.open(ImageViewComponent, {
+      width: '600px',
+      height: '600px',
+      data: {
+        imageUrl: url
+      }
+    });
+  }
 
   getUsers() {
     this.userService.getAll()
