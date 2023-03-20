@@ -20,15 +20,13 @@ export class ManageCategoriesEditComponent {
     private router: Router,
     private fb: FormBuilder,
     private toastService: ToastService,
-    public dialogRef: MatDialogRef<ManageUserAddComponent>,
+    public dialogRef: MatDialogRef<ManageCategoriesEditComponent>,
     private CategoryService: CategoryService,
     @Inject(MAT_DIALOG_DATA) public data: { categories: any},
   ) {}
 
   ngOnInit(): void {
     this.categories = this.data.categories;
-    console.log("🚀 ~ ManageCategoriesEditComponent ~ categories:", this.categories)
-
     this.buildForm();
   }
 

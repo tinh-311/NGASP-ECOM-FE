@@ -25,7 +25,7 @@ export class ManageUserEditComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private toastService: ToastService,
-    public dialogRef: MatDialogRef<ManageUserAddComponent>,
+    public dialogRef: MatDialogRef<ManageUserEditComponent>,
     private usertService: UserService,
     @Inject(MAT_DIALOG_DATA) public data: { user: any },
     ) {}

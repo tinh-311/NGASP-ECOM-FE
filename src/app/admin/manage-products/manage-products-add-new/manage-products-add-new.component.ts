@@ -26,7 +26,7 @@ export class ManageProductsAddNewComponent {
     private router: Router,
     private fb: FormBuilder,
     private toastService: ToastService,
-    public dialogRef: MatDialogRef<ManageUserAddComponent>,
+    public dialogRef: MatDialogRef<ManageProductsAddNewComponent>,
     private productService: ProductService,
     @Inject(MAT_DIALOG_DATA) public data: { categories: any },
   ) {}

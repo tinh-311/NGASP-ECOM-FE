@@ -26,7 +26,7 @@ export class ManageCategoriesAddNewComponent  {
     private fb: FormBuilder,
     private toastService: ToastService,
     private categoryService: CategoryService,
-    public dialogRef: MatDialogRef<ManageUserAddComponent>,
+    public dialogRef: MatDialogRef<ManageCategoriesAddNewComponent>,
 
   ) {}
 
