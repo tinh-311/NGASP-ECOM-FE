@@ -11,7 +11,7 @@ import { ManageCategoriesEditComponent } from './manage-categories-edit/manage-c
   templateUrl: './manage-categories.component.html',
   styleUrls: ['./manage-categories.component.scss']
 })
-export class ManageCategoriesComponent implements OnInit{
+export class ManageCategoriesComponent implements OnInit {
   currentPage: number = 1;
   dataCategory: any = [];
   categories: any;

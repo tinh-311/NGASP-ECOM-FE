@@ -17,6 +17,10 @@ export class ProductService {
     private httpClient: HttpClient
   ) { }
 
+  getTotal() {
+    return this.httpClient.get(this.apiUrl + '/Product/TotalOfProducts');
+  }
+
   add(product: any) {
     return this.httpClient.post(this.apiUrl
       + `/Product/InsertProduct`

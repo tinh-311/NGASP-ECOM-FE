@@ -33,6 +33,8 @@ export class ManageUserEditComponent implements OnInit {
     ) {}
 
   buildForm() {
+    console.log('🌷🌷🌷 ~ this.user: ', this.user)
+
     this.editForm = this.fb.group({
         firstName: [this.user?.firstName , Validators.required],
         lastName: [this.user?.lastName , Validators.required],
@@ -40,7 +42,7 @@ export class ManageUserEditComponent implements OnInit {
         address: [this.user?.address, [Validators.required]],
         phoneNumber: [this.user?.mobile, [Validators.required]],
         password: [this.user?.password, [Validators.required]],
-        imageUrl: [this.user?.userAvt, [Validators.required]],
+        imageUrl: [this.user?.userAvt],
         role: [this.user?.role, [Validators.required]],
     });
   }
@@ -55,8 +57,10 @@ export class ManageUserEditComponent implements OnInit {
       'address': this.editForm.value.address,
       'mobile': this.editForm.value.phoneNumber,
       'password': this.editForm.value.password,
+      'userAvt': this.editForm.value.imageUrl,
       'role': this.editForm.value.role
     }
+    console.log('🌷🌷🌷 ~ newUser: ', newUser)
 
     this.usertService.editUser(newUser).subscribe(res => {
     }, (err) => {

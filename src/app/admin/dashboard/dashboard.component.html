@@ -22,30 +22,30 @@
   <br/>
 
   <div *ngIf="sessison === NAV_ITEM.Dashboard">
-    <div class="col-div-3">
+    <div (click)="navigate(NAV_ITEM.ManageUsers)" class="col-div-3">
       <div class="box card">
-        <p>67<br/><span>Customers</span></p>
+        <p> {{ userTotal }} <br/><span> Users </span></p>
         <i class="fa fa-users box-icon"></i>
       </div>
     </div>
-    <div class="col-div-3">
+    <div (click)="navigate(NAV_ITEM.ManageCategories)" class="col-div-3">
       <div class="box card">
-        <p>88<br/><span>Category</span></p>
+        <p> {{ categoryTotal }} <br/><span>Category</span></p>
         <i class="fa fa-list box-icon"></i>
       </div>
     </div>
-    <div class="col-div-3">
+    <div (click)="navigate(NAV_ITEM.ManageProducts)" class="col-div-3">
       <div class="box card">
-        <p>99<br/><span>Products</span></p>
+        <p> {{ productTotal }} <br/><span>Products</span></p>
         <i class="fa fa-shopping-bag box-icon"></i>
       </div>
     </div>
-    <div class="col-div-3">
+    <!-- <div class="col-div-3">
       <div class="box card">
         <p>78<br/><span>Orders</span></p>
         <i class="fa fa-tasks box-icon"></i>
       </div>
-    </div>
+    </div> -->
     <div class="clearfix"></div>
   </div>
 

@@ -29,8 +29,8 @@
         <input formControlName="email" type="text" id="form3Example3" class="form-control form-control-lg"
           placeholder="Email" />
 
-        <div *ngIf="editForm.controls['email'].errors && editForm.controls['email'].dirty" class="text-danger">
-          <div *ngIf="editForm.controls['email'].errors.required"> Email is required</div>
+        <div *ngIf="editForm.controls['email']?.errors && editForm.controls['email']?.dirty" class="text-danger">
+          <div *ngIf="editForm.controls['email']?.errors?.required"> Email is required</div>
         </div>
       </div>
 
@@ -38,8 +38,8 @@
         <input formControlName="address" type="text" id="form3Example3" class="form-control form-control-lg"
           placeholder="Address" />
 
-        <div *ngIf="editForm.controls['address'].errors && editForm.controls['address'].dirty" class="text-danger">
-          <div *ngIf="editForm.controls['address'].errors.required">Address is required</div>
+        <div *ngIf="editForm.controls['address']?.errors && editForm.controls['address']?.dirty" class="text-danger">
+          <div *ngIf="editForm.controls['address']?.errors.required">Address is required</div>
         </div>
       </div>
     </div>
@@ -49,8 +49,8 @@
         <input formControlName="phoneNumber" type="text" id="form3Example3" class="form-control form-control-lg"
           placeholder="Phone Number" />
 
-        <div *ngIf="editForm.controls['phoneNumber'].errors && editForm.controls['phoneNumber'].dirty" class="text-danger">
-          <div *ngIf="editForm.controls['phoneNumber'].errors.required"> Phone Number is required</div>
+        <div *ngIf="editForm.controls['phoneNumber']?.errors && editForm.controls['phoneNumber']?.dirty" class="text-danger">
+          <div *ngIf="editForm.controls['phoneNumber']?.errors.required"> Phone Number is required</div>
         </div>
       </div>
 
@@ -58,8 +58,8 @@
         <input formControlName="imageUrl" type="text" id="form3Example3" class="form-control form-control-lg"
           placeholder="Image Url" />
 
-        <div *ngIf="editForm.controls['imageUrl'].errors && editForm.controls['imageUrl'].dirty" class="text-danger">
-          <div *ngIf="editForm.controls['imageUrl'].errors.required"> Image Url is required</div>
+        <div *ngIf="editForm.controls['imageUrl']?.errors && editForm.controls['imageUrl']?.dirty" class="text-danger">
+          <div *ngIf="editForm.controls['imageUrl']?.errors.required"> Image Url is required</div>
         </div>
       </div>
     </div>

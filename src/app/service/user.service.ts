@@ -14,6 +14,10 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
   apiUrl = 'http://alo1234.somee.com/api/User';
 
+  getTotal() {
+    return this.httpClient.get(this.apiUrl + '/TotalOfUsers');
+  }
+
   getAll(): Observable<any> {
     return this.httpClient.get<any>(this.apiUrl + `/GetUsers`);
   }

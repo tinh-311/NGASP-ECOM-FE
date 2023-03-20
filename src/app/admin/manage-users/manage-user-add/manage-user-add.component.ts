@@ -22,7 +22,7 @@ export class ManageUserAddComponent implements OnInit{
     address: ['', Validators.required],
     phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
     email: ['', [Validators.required, Validators.email]],
-    imageUrl: ['', [Validators.required]],
+    imageUrl: [''],
     password: ['', Validators.required]
   });
 
@@ -60,8 +60,10 @@ export class ManageUserAddComponent implements OnInit{
       address: this.registerForm.value.address,
       mobile: this.registerForm.value.phoneNumber,
       password: this.registerForm.value.password,
+      userAvt: this.registerForm.value?.imageUrl,
       role: 'user'
     }
+    console.log('🌷🌷🌷 ~ user: ', user)
 
     this.userService.register(user).subscribe(res => {
     }, (err) => {
