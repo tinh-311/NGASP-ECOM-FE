@@ -56,7 +56,6 @@ export class ManageUserEditComponent implements OnInit {
       'userAvt': this.editForm.value.imageUrl,
       'role': this.editForm.value.role
     }
-    console.log('🌷🌷🌷 ~ newUser: ', newUser)
 
     this.usertService.editUser(newUser).subscribe(res => {
     }, (err) => {
@@ -77,11 +76,12 @@ export class ManageUserEditComponent implements OnInit {
   clearForm() {
     this.editForm = this.fb.group({
       firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      lastName: [''],
       email: ['', [Validators.required]],
       address: ['', [Validators.required]],
       mobile: ['', [Validators.required]],
       password: ['', [Validators.required]],
+      imageUrl: [''],
       role: ['', [Validators.required]],
     });
   }
