@@ -65,9 +65,8 @@
     </div>
 
     <div class="form-outline mb-4">
-      <select formControlName="role" class="form-control form-control-lg">
-        <option value="">-- Select Category --</option>
-        <option *ngFor="let user of roleUser">{{ user?.role | titlecase }}</option>
+      <select formControlName="role" class="form-control">
+        <option value="{{ role }}" *ngFor="let role of roleUser">{{ role | titlecase }}</option>
       </select>
       <div *ngIf="editForm.controls['role'].errors && editForm.controls['role'].dirty" class="text-danger">
         <div *ngIf="editForm.controls['role'].errors.required"> Role is required</div>

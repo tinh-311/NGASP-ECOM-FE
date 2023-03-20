@@ -13,13 +13,11 @@ import { ManageUserAddComponent } from '../manage-user-add/manage-user-add.compo
 })
 export class ManageUserEditComponent implements OnInit {
   user: any;
-  roleUser: any;
+  roleUser: any = ['admin', 'user'];
 
   editForm: any;
   ngOnInit(): void {
     this.user = this.data.user;
-    this.getUser();
-
     this.buildForm();
   }
 
@@ -33,8 +31,6 @@ export class ManageUserEditComponent implements OnInit {
     ) {}
 
   buildForm() {
-    console.log('🌷🌷🌷 ~ this.user: ', this.user)
-
     this.editForm = this.fb.group({
         firstName: [this.user?.firstName , Validators.required],
         lastName: [this.user?.lastName , Validators.required],
@@ -89,11 +85,4 @@ export class ManageUserEditComponent implements OnInit {
       role: ['', [Validators.required]],
     });
   }
-
-  getUser() {
-    this.usertService.getAll().subscribe(res => {
-      this.roleUser = res;
-    })
-  }
-
 }

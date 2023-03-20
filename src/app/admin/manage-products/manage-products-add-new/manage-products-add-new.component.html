@@ -39,7 +39,7 @@
     </div>
 
     <div class="form-outline mb-4">
-      <select formControlName="category" (change)="onChangeCategory()" class="form-control form-control-lg">
+      <select formControlName="category" (change)="onChangeCategory()" class="form-control">
         <option value="">-- Select Category --</option>
         <option *ngFor="let category of categories" [value]="category?.id">{{ category?.category | titlecase }}</option>
       </select>
