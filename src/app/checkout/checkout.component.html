@@ -48,7 +48,8 @@
                 <div class="w-50" style="margin-right: 20px;">
                   <label for="" class="form-label">Payment Menthod</label>
                   <select [(ngModel)]="selectedPaymentMethodId" formControlName="paymentMenthod" class="form-control">
-                    <option *ngFor="let paymentMenthod of paymentMenthods" [value]="paymentMenthod?.id">{{ paymentMenthod?.type | titlecase }}</option>
+                    <option *ngFor="let paymentMenthod of paymentMenthods" [value]="paymentMenthod?.id">{{ paymentMenthod?.provider }}
+                    </option>
                   </select>
 
                   <div *ngIf="shipInfoForm.controls['paymentMenthod']?.errors && shipInfoForm.controls['paymentMenthod'].dirty" class="text-danger">

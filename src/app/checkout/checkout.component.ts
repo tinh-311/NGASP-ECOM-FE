@@ -54,7 +54,7 @@ export class CheckoutComponent {
 
     this.paymentMenthodsService.getAll().subscribe((res: any) => {
       this.paymentMenthods = res;
-      this.selectedPaymentMethodId = this.paymentMenthods[0]?.id;
+      this.selectedPaymentMethodId = this.paymentMenthods[this.paymentMenthods?.length - 1]?.id;
     })
 
     this.buildCheckoutForm();
@@ -63,9 +63,10 @@ export class CheckoutComponent {
 
   checkout() {
     const paymentMenthod = this.paymentMenthods.find((res: any) => res?.id === this.shipInfoForm.value.paymentMenthod);
+
     const paymentParams: any = {
-      'paymentMethod': paymentMenthod[0],
-      'user': this.currentUser,
+      'paymentMethodId': paymentMenthod?.id,
+      'userId': this.currentUser?.id,
       'totalAmount': this.getTotalPrice() +  this.shippingCost - this.discount,
       'shipping charges': this.shippingCost,
       'amountReduced': 0,
@@ -74,8 +75,8 @@ export class CheckoutComponent {
     console.log('🌷🌷🌷 ~ paymentParams: ', paymentParams)
 
     this.paymentService.add(paymentParams).subscribe((res: any) => {
+      console.log('🌷🌷🌷 ~ res: ', res)
     }, (err) => {
-      console.log('🌷🌷🌷 ~ err: ', err)
     })
   }
 
