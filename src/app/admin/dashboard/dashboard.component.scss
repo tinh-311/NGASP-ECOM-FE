@@ -209,8 +209,16 @@ td, th {
   font-weight: 700;
   font-size: 2em;
 }
-.active{
+.activeS{
   background-color: #99b9e3;
 }
 .fullw{margin-left: 70px!important;}
 .hidden{visibility: hidden;}
+
+.active {
+  max-width: 96px;
+}
+
+.resp {
+  margin-left: 90px!important;
+}
