@@ -6,6 +6,7 @@ import { ToastService } from 'src/app/service/toast.service';
 import { ManageProductsAddNewComponent } from './manage-products-add-new/manage-products-add-new.component';
 import { ImageViewComponent } from 'src/app/image-view/image-view.component';
 import { ManageProductsEditComponent } from './manage-products-edit/manage-products-edit.component';
+import { ConfirmDialogComponent } from 'src/app/dialog/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-manage-products',
@@ -91,16 +92,27 @@ export class ManageProductsComponent {
   }
 
   deleteProduct(item: any) {
-    this.productService.delete(item?.id).subscribe(res =>{
-    }, (err) => {
-      switch(err?.error?.text) {
-        case 'deleted': {
-          this.toastService.show(`Delete ${item?.title} successfully!`);
-          this.getProducts();
-          break;
-        }
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: `Are you sure you want to delete?`,
+        message: `Confirm delete?`
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.productService.delete(item?.id).subscribe(res =>{
+        }, (err) => {
+          switch(err?.error?.text) {
+            case 'deleted': {
+              this.toastService.show(`Delete ${item?.title} successfully!`);
+              this.getProducts();
+              break;
+            }
+          }
+        })
       }
-    })
+    });
   }
 
   viewImage(url: string) {

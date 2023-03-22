@@ -38,6 +38,7 @@ import { ImageViewComponent } from './image-view/image-view.component';
 import { ManageProductsEditComponent } from './admin/manage-products/manage-products-edit/manage-products-edit.component';
 import { ManageCategoriesAddNewComponent } from './admin/manage-categories/manage-categories-add-new/manage-categories-add-new.component';
 import { ManageCategoriesEditComponent } from './admin/manage-categories/manage-categories-edit/manage-categories-edit.component';
+import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { ManageCategoriesEditComponent } from './admin/manage-categories/manage-
     ManageProductsEditComponent,
     ManageCategoriesAddNewComponent,
     ManageCategoriesEditComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,

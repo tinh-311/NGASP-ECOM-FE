@@ -5,6 +5,7 @@ import { CategoryService } from 'src/app/service/category.service';
 import { ToastService } from 'src/app/service/toast.service';
 import { ManageCategoriesAddNewComponent } from './manage-categories-add-new/manage-categories-add-new.component';
 import { ManageCategoriesEditComponent } from './manage-categories-edit/manage-categories-edit.component';
+import { ConfirmDialogComponent } from 'src/app/dialog/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-manage-categories',
@@ -58,18 +59,28 @@ export class ManageCategoriesComponent implements OnInit {
 
 
   deleteCategory(id: any) {
-    // console.log("🚀 ~ ManageCategoriesComponent ~ id:", id)
-    this.categoryService.deleteCategory(id).subscribe(res => {
-    }, (err) => {
-      this.getCategory();
-      switch(err?.error?.text) {
-        case 'deleted': {
-          this.toastService.show('Delete Successfully!!!', 'err');
-          break;
-        }
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: `Are you sure you want to delete?`,
+        message: `Confirm delete?`
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.categoryService.deleteCategory(id).subscribe(res => {
+        }, (err) => {
+          this.getCategory();
+          switch(err?.error?.text) {
+            case 'deleted': {
+              this.toastService.show('Delete Successfully!!!', 'err');
+              break;
+            }
+          }
+          }
+        )
       }
-      }
-    )
+    });
   }
 
 }

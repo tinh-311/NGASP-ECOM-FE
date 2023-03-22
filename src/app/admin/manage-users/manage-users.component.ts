@@ -6,6 +6,7 @@ import { UserService } from 'src/app/service/user.service';
 import { ManageUserAddComponent } from './manage-user-add/manage-user-add.component';
 import { ManageUserEditComponent } from './manage-user-edit/manage-user-edit.component';
 import { ImageViewComponent } from 'src/app/image-view/image-view.component';
+import { ConfirmDialogComponent } from 'src/app/dialog/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-manage-users',
@@ -67,23 +68,33 @@ export class ManageUsersComponent {
     });
   }
 
-  deleteUser(id: any) {
-    this.userService.deleteUser(id).subscribe(res => {
-    }, (err) => {
-      console.log('🌷🌷🌷 ~ err: ', err)
-      this.getUsers();
-      switch(err?.error?.text) {
-        case 'deleted': {
-          this.toastService.show('Delete successfully', 'err');
-          break;
-        }
-        default: {
-          this.toastService.show('Something wrong', 'err');
-          break;
-        }
+  deleteUser(item: any) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: `Are you sure you want to delete ${item?.firstName} ${item?.lastName}?`,
+        message: `Confirm delete?`
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.userService.deleteUser(item.id).subscribe(res => {
+        }, (err) => {
+          this.getUsers();
+          switch(err?.error?.text) {
+            case 'deleted': {
+              this.toastService.show('Delete successfully', 'err');
+              break;
+            }
+            default: {
+              this.toastService.show('Something wrong', 'err');
+              break;
+            }
+          }
+          }
+        )
       }
-      }
-    )
+    });
   }
 }
 
