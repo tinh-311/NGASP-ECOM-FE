@@ -26,20 +26,16 @@ export class UserService {
     return this.httpClient.post<any>(this.apiUrl + '/RegisterUser', user);
   }
 
-  //http://alo1234.somee.com/api/User/Update
   editUser(data: any): Observable<any> {
-    console.log("🚀 ~ UserService ~ data:", data)
     return this.httpClient.put<any>(this.apiUrl + `/Update`, data);
   }
 
-  //http://alo1234.somee.com/api/User/GetUser/5
   userByID(id: any): Observable<any> {
     return this.httpClient.get<any>(this.apiUrl + `/GetUser/${id}`);
   }
 
-//http://alo1234.somee.com/api/User/Delete?id=1
   deleteUser(id: any): Observable<any> {
-    console.log("🚀 ~ UserService ~ data:", id)
+    console.log('🌷🌷🌷 ~ id: ', id)
     return this.httpClient.delete<any>(this.apiUrl + `/Delete?id=${id}`)
   }
 

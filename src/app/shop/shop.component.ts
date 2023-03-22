@@ -32,7 +32,7 @@ export class ShopComponent implements OnInit {
   productArrayFilter: number = 6;
   totalItems: number = 0;
 
-  currentUser: any = {};
+  currentUser: any;
 
   constructor(
     private router: Router,
@@ -46,7 +46,9 @@ export class ShopComponent implements OnInit {
 
   ngOnInit() {
     const token = this.cookieService.get('token');
-    this.currentUser = jwt_decode(token);
+    if(token) {
+      this.currentUser = jwt_decode(token);
+    }
 
     this.route.queryParams.subscribe(params => {
       this.categoryId = params['categoryId'];

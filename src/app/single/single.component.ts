@@ -15,7 +15,7 @@ import jwt_decode from 'jwt-decode';
 export class SingleComponent implements OnInit {
   productId: string = '';
   product: any;
-  currentUser: any = {};
+  currentUser: any;
   quantity: number = 1;
 
   constructor(
@@ -29,7 +29,9 @@ export class SingleComponent implements OnInit {
 
   ngOnInit() {
     const token = this.cookieService.get('token');
-    this.currentUser = jwt_decode(token);
+    if(token) {
+      this.currentUser = jwt_decode(token);
+    }
 
     this.route.queryParams.subscribe(params => {
       this.productId = params['productId'];

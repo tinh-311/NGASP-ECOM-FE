@@ -81,7 +81,7 @@
       <div class="row mb-4">
         <div class="col-md-4 col-6 mb-2">
         <label class="form-label">Size</label>
-        <select class="form-select">
+        <select [disabled]="!currentUser || currentUser?.role === 'admin'" class="form-select">
           <option>Small</option>
           <option>Medium</option>
           <option>Large</option>
@@ -90,13 +90,13 @@
         <div class="col-md-4 col-6 mb-3">
         <label class="form-label d-block">Quantity</label>
         <div class="input-group input-spinner">
-          <button (click)="handelQuantity('down')" class="btn btn-icon btn-light" type="button">
+          <button [disabled]="!currentUser || currentUser?.role === 'admin'" (click)="handelQuantity('down')" class="btn btn-icon btn-light" type="button">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#999" viewBox="0 0 24 24">
             <path d="M19 13H5v-2h14v2z"></path>
             </svg>
           </button>
-          <input [(ngModel)]="quantity" class="form-control text-center" placeholder="" value="1">
-          <button (click)="handelQuantity('up')" class="btn btn-icon btn-light" type="button">
+          <input [disabled]="!currentUser || currentUser?.role === 'admin'" [(ngModel)]="quantity" class="form-control text-center" placeholder="" value="1">
+          <button [disabled]="!currentUser || currentUser?.role === 'admin'" (click)="handelQuantity('up')" class="btn btn-icon btn-light" type="button">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#999" viewBox="0 0 24 24">
             <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
             </svg>
@@ -105,8 +105,8 @@
         </div>
       </div>
 
-      <a href="#" class="btn  btn-warning"> Buy now </a>
-      <button [disabled]="currentUser?.role === 'admin'" (click)="addToCart()" class="btn  btn-primary"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart </button>
+      <button [disabled]="!currentUser || currentUser?.role === 'admin'" class="btn  btn-warning"> Buy now </button>
+      <button [disabled]="!currentUser || currentUser?.role === 'admin'" (click)="addToCart()" class="btn  btn-primary"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart </button>
       <a class="btn  btn-light"> <i class="me-1 fa fa-heart"></i> Save </a>
 
       </article>

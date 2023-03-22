@@ -29,9 +29,9 @@ export class HeaderComponent implements OnInit {
     if(token) {
       this.currentUser = jwt_decode(token);
       this.isAdmin = this.currentUser?.role === 'admin';
+      this.getCartItemsQuantity();
     }
 
-    this.getCartItemsQuantity();
     this.isHidenBadge = this.cartItemsQuantity <= 0;
 
     this.cartService.cartItem$.subscribe(cart => {

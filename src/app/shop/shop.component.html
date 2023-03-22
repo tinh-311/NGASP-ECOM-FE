@@ -78,7 +78,7 @@
                 </div>
                 <p class="title mb-2"> {{ formatTitle(product.title) }} </p>
 
-                <button [disabled]="currentUser?.role === 'admin'" (click)="addToCart(product)" class="btn btn-primary">Add to cart</button>
+                <button [disabled]="!currentUser || currentUser?.role === 'admin'" (click)="addToCart(product)" class="btn btn-primary">Add to cart</button>
                 <a class="btn btn-light btn-icon"> <i class="fa fa-heart"></i> </a>
               </figcaption>
             </figure>

@@ -70,10 +70,15 @@ export class ManageUsersComponent {
   deleteUser(id: any) {
     this.userService.deleteUser(id).subscribe(res => {
     }, (err) => {
+      console.log('🌷🌷🌷 ~ err: ', err)
       this.getUsers();
       switch(err?.error?.text) {
         case 'deleted': {
           this.toastService.show('Delete successfully', 'err');
+          break;
+        }
+        default: {
+          this.toastService.show('Something wrong', 'err');
           break;
         }
       }

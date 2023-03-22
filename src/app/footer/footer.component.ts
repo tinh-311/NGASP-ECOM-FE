@@ -27,15 +27,17 @@ export class FooterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.cartService.cartItem$.subscribe(cart => {
-      const token = this.cookieService.get('token');
-      this.currentUser = jwt_decode(token);
-      this.getCart();
-    });
-
     const token = this.cookieService.get('token');
+    if(token) {
       this.currentUser = jwt_decode(token);
       this.getCart();
+
+      this.cartService.cartItem$.subscribe(cart => {
+        if(this.currentUser) {
+          this.getCart();
+        }
+      });
+    }
   }
 
   getTotalPrice(): number {
