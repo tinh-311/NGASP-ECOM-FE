@@ -39,6 +39,8 @@ import { ManageProductsEditComponent } from './admin/manage-products/manage-prod
 import { ManageCategoriesAddNewComponent } from './admin/manage-categories/manage-categories-add-new/manage-categories-add-new.component';
 import { ManageCategoriesEditComponent } from './admin/manage-categories/manage-categories-edit/manage-categories-edit.component';
 import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +69,7 @@ import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.c
     ManageCategoriesAddNewComponent,
     ManageCategoriesEditComponent,
     ConfirmDialogComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,7 +86,8 @@ import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.c
     ReactiveFormsModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [ManageUserAddComponent],
   providers: [TitleCasePipe],

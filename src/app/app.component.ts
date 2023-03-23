@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoadingService } from './service/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'NGASP-ECOM-FE';
+  isLoading: boolean = false;
+
+  constructor(private loadingService: LoadingService) {
+    this.loadingService.isLoadingChanged.subscribe((isLoading: boolean) => {
+      this.isLoading = isLoading;
+    });
+  }
 }

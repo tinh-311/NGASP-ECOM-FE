@@ -4,6 +4,7 @@ import { CategoryService } from '../service/category.service';
 import { Product } from '../model/product.model';
 import { ProductService } from '../service/product.service';
 import { NavigationExtras, Router } from '@angular/router';
+import { LoadingService } from '../service/loading.service';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private categoryList: CategoryService,
     private productService: ProductService,
-    private router: Router
+    private router: Router,
+    public loadingService: LoadingService
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +41,7 @@ export class HomeComponent implements OnInit {
   }
 
   getProducts() {
+    this.loadingService.showLoading();
     const categoryParam: {} = {
       category: 'jewelry',
       subCategory: 'watches'
@@ -46,13 +49,16 @@ export class HomeComponent implements OnInit {
 
     this.productService.getByCategory(categoryParam).subscribe((data) => {
       this.products = data as Product[];
+      this.loadingService.hideLoading();
     })
   }
 
   getCatagory() {
+    this.loadingService.showLoading();
     this.categoryList.getCategoryList()
     .subscribe((data: Catagory[]) => {
       this.data = data;
+      this.loadingService.hideLoading();
     });
   }
 

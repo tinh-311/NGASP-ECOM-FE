@@ -7,6 +7,7 @@ import { CategoryService } from '../service/category.service';
 import { ProductService } from '../service/product.service';
 import { ToastService } from '../service/toast.service';
 import jwt_decode from 'jwt-decode';
+import { LoadingService } from '../service/loading.service';
 
 @Component({
   selector: 'app-products',
@@ -40,10 +41,12 @@ export class ProductsComponent implements OnInit, AfterViewInit {
     private productService: ProductService,
     private cartService: CartService,
     private toastService: ToastService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    public loadingService: LoadingService
   ){ }
 
   ngOnInit(): void {
+    this.loadingService.showLoading();
     const token = this.cookieService.get('token');
     this.currentUser = jwt_decode(token);
     this.getProducts();
@@ -93,10 +96,12 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   }
 
   getProducts() {
+    this.loadingService.showLoading();
     this.productService.get().subscribe((data) => {
       this.products = data as Product[];
       this.productsOriginal = this.products;
       this.totalItems = this.products.length;
+      this.loadingService.hideLoading();
     })
   }
 

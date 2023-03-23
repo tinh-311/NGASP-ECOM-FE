@@ -8,6 +8,7 @@ import { CartService } from '../service/cart.service';
 import { ToastService } from '../service/toast.service';
 import jwt_decode from 'jwt-decode';
 import { CookieService } from 'ngx-cookie-service';
+import { LoadingService } from '../service/loading.service';
 
 @Component({
   selector: 'app-shop',
@@ -41,10 +42,12 @@ export class ShopComponent implements OnInit {
     private productService: ProductService,
     private cartService: CartService,
     private toastService: ToastService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    public loadingService: LoadingService
   ) { }
 
   ngOnInit() {
+    this.loadingService.showLoading();
     const token = this.cookieService.get('token');
     if(token) {
       this.currentUser = jwt_decode(token);
@@ -61,6 +64,7 @@ export class ShopComponent implements OnInit {
   }
 
   addToCart(product: any) {
+    this.loadingService.showLoading();
     const cart = {
       userid: this.currentUser.id,
       productid: product.id,
@@ -72,6 +76,7 @@ export class ShopComponent implements OnInit {
       switch(err?.error?.text) {
         case 'inserted': {
           this.cartService.oncartChange(err?.error?.text);
+          this.loadingService.hideLoading();
           this.toastService.show(`Added ${product?.title} to the cart!`);
           break;
         }
@@ -101,6 +106,7 @@ export class ShopComponent implements OnInit {
   }
 
   getProducts() {
+    this.loadingService.showLoading();
     const categoryParam: {} = {
       category: this.categoryData.category,
       subCategory: this.categoryData.subCategory
@@ -110,6 +116,7 @@ export class ShopComponent implements OnInit {
       this.products = data as Product[];
       this.productsOriginal = this.products;
       this.totalItems = this.products.length;
+      this.loadingService.hideLoading();
     })
   }
 

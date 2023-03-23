@@ -5,6 +5,7 @@ import { ProductService } from '../service/product.service';
 import { ToastService } from '../service/toast.service';
 import { CookieService } from 'ngx-cookie-service';
 import jwt_decode from 'jwt-decode';
+import { LoadingService } from '../service/loading.service';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class FooterComponent implements OnInit {
     private productService: ProductService,
     private cartService: CartService,
     private toastService: ToastService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    public loadingService: LoadingService
   ) { }
 
   ngOnInit() {
@@ -53,6 +55,7 @@ export class FooterComponent implements OnInit {
   }
 
   deleteCartItem(cartItem: any) {
+    this.loadingService.showLoading();
     const parmas = {
       userId: this.currentUser?.id,
       productId: cartItem?.product?.id,
@@ -97,6 +100,7 @@ export class FooterComponent implements OnInit {
   }
 
   saveEidt(product: any) {
+    this.loadingService.showLoading();
     const token = this.cookieService.get('token');
     this.currentUser = jwt_decode(token);
     const cart = {
@@ -110,6 +114,7 @@ export class FooterComponent implements OnInit {
       switch(err?.error?.text) {
         case 'updated': {
           this.cartService.oncartChange(err?.error?.text);
+          this.loadingService.hideLoading();
           this.toastService.show('Updated cart successfully!');
           this.cancelEdit();
           break;
@@ -123,6 +128,7 @@ export class FooterComponent implements OnInit {
   }
 
   getCart() {
+    this.loadingService.showLoading();
     this.cartService.getCarts(this.currentUser?.id).subscribe((res: any) => {
       res.cartItems = res?.cartItems?.filter((cartItem: any) =>
         cartItem.quantity > 0
@@ -130,6 +136,7 @@ export class FooterComponent implements OnInit {
         && cartItem.product?.title !== ''
       );
       this.cartItems = res?.cartItems;
+      this.loadingService.hideLoading();
     })
   }
 

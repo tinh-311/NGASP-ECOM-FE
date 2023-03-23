@@ -7,6 +7,11 @@ import jwt_decode from 'jwt-decode';
 import { PaymentMenthodService } from '../service/payment-menthod.service';
 import { CartService } from '../service/cart.service';
 import { PaymentService } from '../service/payment.service';
+import { combineLatest } from 'rxjs';
+import { UserService } from '../service/user.service';
+import { User } from './../model/User.model';
+import { LoginService } from '../service/login.service';
+import { LoadingService } from '../service/loading.service';
 
 @Component({
   selector: 'app-checkout',
@@ -23,6 +28,7 @@ export class CheckoutComponent {
   discount: number = 0;
 
   selectedPaymentMethodId: number = 0;
+  loading: boolean = false;
 
   checkoutForm: any = this.fb.group({
     firstName: ['', [Validators.required]],
@@ -43,18 +49,22 @@ export class CheckoutComponent {
     private cookieService: CookieService,
     private paymentMenthodsService: PaymentMenthodService,
     private cartService: CartService,
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private userService: UserService,
+    private loginService: LoginService,
+    public loadingService: LoadingService
   ) {}
 
   ngOnInit() {
+    this.loadingService.showLoading();
     const token = this.cookieService.get('token');
     this.currentUser = jwt_decode(token);
 
     this.getCart();
-
     this.paymentMenthodsService.getAll().subscribe((res: any) => {
       this.paymentMenthods = res;
       this.selectedPaymentMethodId = this.paymentMenthods[this.paymentMenthods?.length - 1]?.id;
+      this.loadingService.hideLoading();
     })
 
     this.buildCheckoutForm();
@@ -62,25 +72,65 @@ export class CheckoutComponent {
   }
 
   checkout() {
+    this.loadingService.showLoading();
     const paymentMenthod = this.paymentMenthods.find((res: any) => res?.id === this.shipInfoForm.value.paymentMenthod);
-
     const paymentParams: any = {
       'paymentMethodId': paymentMenthod?.id,
       'userId': this.currentUser?.id,
       'totalAmount': this.getTotalPrice() +  this.shippingCost - this.discount,
-      'shipping charges': this.shippingCost,
+      'shipingCharges': this.shippingCost,
       'amountReduced': 0,
       'amountPaid': 0,
     }
-    console.log('🌷🌷🌷 ~ paymentParams: ', paymentParams)
 
-    this.paymentService.add(paymentParams).subscribe((res: any) => {
-      console.log('🌷🌷🌷 ~ res: ', res)
-    }, (err) => {
+    this.userService.userByID(this.currentUser.id).subscribe((user) => {
+      let u: User = {...user}
+      u.firstName = this.checkoutForm.value.firstName;
+      u.lastName = this.checkoutForm.value.lastName;
+      u.mobile = this.checkoutForm.value.phone;
+      u.email = this.checkoutForm.value.email;
+      u.address = this.shipInfoForm.value.address;
+
+
+      this.userService.editUser(u)
+      .subscribe((user) => {
+      }, (err) => {
+        this.loginService.login({
+          email: u.email,
+          password: u.password
+        }).subscribe(res => {
+        }, async (err) => {
+          switch(err?.error?.text) {
+            default: {
+              const tokenString = err?.error?.text;
+              await this.cookieService.set('token', tokenString);
+              const token = this.cookieService.get('token');
+              this.currentUser = jwt_decode(token);
+
+              this.paymentService.add(paymentParams).subscribe((res: any) => {
+              }, (err) => {
+                switch(paymentMenthod.provider) {
+                  case 'Cash': {
+                    this.router.navigate(['/thankyou']);
+                    this.loadingService.hideLoading();
+                    break;
+                  }
+                  default: {
+
+                    break;
+                  }
+                }
+              })
+              break;
+            }
+          }
+        })
+      })
     })
   }
 
   deleteCartItem(cartItem: any) {
+    this.loadingService.showLoading();
     const parmas = {
       userId: this.currentUser?.id,
       productId: cartItem?.product?.id,
@@ -94,6 +144,7 @@ export class CheckoutComponent {
           this.toastService.show('Deleted')
           this.cartService.oncartChange(err?.error?.text);
           this.getCart();
+          this.loadingService.hideLoading();
           break;
         }
       }
@@ -125,6 +176,7 @@ export class CheckoutComponent {
   }
 
   saveEidt(product: any) {
+    this.loadingService.showLoading();
     const cart = {
       userid: this.currentUser.id,
       productid: product.id,
@@ -139,6 +191,7 @@ export class CheckoutComponent {
           this.toastService.show('Updated cart successfully!');
           this.getCart();
           this.cancelEdit();
+          this.loadingService.hideLoading();
           break;
         }
       }
@@ -150,6 +203,7 @@ export class CheckoutComponent {
   }
 
   getCart() {
+    this.loadingService.showLoading();
     this.cartService.getCarts(this.currentUser?.id).subscribe((res: any) => {
       res.cartItems = res?.cartItems?.filter((cartItem: any) =>
         cartItem.quantity > 0
@@ -157,6 +211,7 @@ export class CheckoutComponent {
         && cartItem.product?.title !== ''
       );
       this.cartItems = res?.cartItems;
+      this.loadingService.hideLoading();
     })
   }
 
