@@ -15,5 +15,6 @@ export class OrderService {
   ) { }
 
   add(params: any) {
+    return this.httpClient.post(this.apiUrl + `/Order/InsertOrder`, params);
   }
 }

@@ -12,6 +12,7 @@ import { UserService } from '../service/user.service';
 import { User } from './../model/User.model';
 import { LoginService } from '../service/login.service';
 import { LoadingService } from '../service/loading.service';
+import { OrderService } from '../service/order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -52,7 +53,8 @@ export class CheckoutComponent {
     private paymentService: PaymentService,
     private userService: UserService,
     private loginService: LoginService,
-    public loadingService: LoadingService
+    public loadingService: LoadingService,
+    public orderService: OrderService,
   ) {}
 
   ngOnInit() {
@@ -108,18 +110,14 @@ export class CheckoutComponent {
               this.currentUser = jwt_decode(token);
 
               this.paymentService.add(paymentParams).subscribe((res: any) => {
-              }, (err) => {
-                switch(paymentMenthod.provider) {
-                  case 'Cash': {
-                    this.router.navigate(['/thankyou']);
-                    this.loadingService.hideLoading();
-                    break;
-                  }
-                  default: {
+                this.cartService.deleteAll(this.currentUser.id).subscribe(res => {
+                }, (err) => {
+                  this.cartService.oncartChange(err?.error?.text);
+                })
 
-                    break;
-                  }
-                }
+                this.router.navigate(['/thankyou']);
+                this.loadingService.hideLoading();
+              }, (err) => {
               })
               break;
             }

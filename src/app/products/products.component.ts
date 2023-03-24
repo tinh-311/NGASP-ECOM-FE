@@ -48,7 +48,9 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.loadingService.showLoading();
     const token = this.cookieService.get('token');
-    this.currentUser = jwt_decode(token);
+    if(token) {
+      this.currentUser = jwt_decode(token);
+    }
     this.getProducts();
   }
 

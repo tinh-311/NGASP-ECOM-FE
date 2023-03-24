@@ -32,6 +32,14 @@ export class CartService {
     )
   }
 
+  deleteAll(id: any) {
+    return this.httpClient.delete(
+      this.apiUrl
+      + `/Cart/DeleteAllCartItem/${id}`,
+      id
+    )
+  }
+
   getCarts(userId: string) {
     return this.httpClient.get(this.apiUrl
       + `/Cart/GetActiveCartOfUser/${userId}`
