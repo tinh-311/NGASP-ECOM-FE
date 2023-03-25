@@ -75,7 +75,7 @@ export class CheckoutComponent {
 
   checkout() {
     this.loadingService.showLoading();
-    const paymentMenthod = this.paymentMenthods.find((res: any) => res?.id === this.shipInfoForm.value.paymentMenthod);
+    const paymentMenthod = this.paymentMenthods.find((res: any) => res?.id == this.shipInfoForm.value.paymentMenthod);
     const paymentParams: any = {
       'paymentMethodId': paymentMenthod?.id,
       'userId': this.currentUser?.id,
@@ -93,7 +93,6 @@ export class CheckoutComponent {
       u.email = this.checkoutForm.value.email;
       u.address = this.shipInfoForm.value.address;
 
-
       this.userService.editUser(u)
       .subscribe((user) => {
       }, (err) => {
@@ -101,11 +100,11 @@ export class CheckoutComponent {
           email: u.email,
           password: u.password
         }).subscribe(res => {
-        }, async (err) => {
+        }, (err) => {
           switch(err?.error?.text) {
             default: {
               const tokenString = err?.error?.text;
-              await this.cookieService.set('token', tokenString);
+              this.cookieService.set('token', tokenString);
               const token = this.cookieService.get('token');
               this.currentUser = jwt_decode(token);
 

@@ -112,7 +112,7 @@
         <hr>
         <p class="mb-3 text-center"> Subtotal:  <strong class="text-danger"> {{ getTotalPrice() | currency:'VND' }} </strong>  </p>
         <div class="mb-3">
-          <a (click)="checkout()" class="btn w-100 btn-success"> Checkout </a>
+          <button [disabled]="!cartItems?.length" (click)="checkout()" class="btn w-100 btn-success"> Checkout </button>
         </div>
         <!-- <p class="mb-3 text-center"> <img src="assets/images/payments.webp" height="22">  </p> -->
 

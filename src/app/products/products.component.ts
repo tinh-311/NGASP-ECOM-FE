@@ -86,12 +86,12 @@ export class ProductsComponent implements OnInit, AfterViewInit {
 
   filterPrice() {
     this.products = this.productsOriginal.filter((product: any) => product.price >= this.minValue && product.price <= this.maxValue);
-    this.totalItems = this.products.length;
+    this.totalItems = this.products?.length;
   }
 
   clearFilter() {
     this.products = this.productsOriginal;
-    this.totalItems = this.products.length;
+    this.totalItems = this.products?.length;
     this.rangeValue = 0;
     this.maxValue = 0;
     this.minValue = 0;
@@ -102,7 +102,7 @@ export class ProductsComponent implements OnInit, AfterViewInit {
     this.productService.get().subscribe((data) => {
       this.products = data as Product[];
       this.productsOriginal = this.products;
-      this.totalItems = this.products.length;
+      this.totalItems = this.products?.length;
       this.loadingService.hideLoading();
     })
   }
